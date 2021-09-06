@@ -7,7 +7,7 @@ import{changeRouter}from'./lib/router.js';
 
 
 
-document.getElementById("root").innerHTML= registration();
+document.getElementById("root").innerHTML =registration();
 
 const init =() => {
     
@@ -15,7 +15,7 @@ document.getElementById("root").innerHTML= login();
     window.addEventListener('hashchange',()=>{
         myFunction();
         console.log(window.location.hash);
-        changeRouter(window.location.hash);
+        changeRouter(window.location.hash); 
 
     })
 }

@@ -18,10 +18,10 @@ export const changeRouter = (hash) => {
        
        switch (hash){
           case  '#/':
-          containerRoot.innerHTML(login());
+          containerRoot.innerHTML=(login());
           break;
           case '#/Registrate-aqui':
-             containerRoot.appendChild(registration());
+             containerRoot.innerHTML=(registration());
              break;
              default:
                  containerRoot.innerText = 'Pagina no existente'

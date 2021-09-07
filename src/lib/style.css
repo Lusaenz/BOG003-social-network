@@ -1,1 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #070B29;
+}
+
+.register-second-page { 
+display: grid;
+background:#494747;    
+width: 85%;
+padding: 30px;
+margin: auto;
+margin-top: 100px;
+border-radius: 10px;
+color: white;
+box-shadow: 7px 13px 35px #1ED83B;
+max-width: 500px;
+margin-top: 40%;
+
+}
+
+.formulary-name-input {
+    padding: 8px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+
+}
+.formulary-input {
+    width: 100%;
+    background: #C4C4C4;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+
+}
+
+.formulary-input:focus {
+    border: 3px solid #1ED83B;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+
+}
+
+.formulary-label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.formulary-fault {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+.formulary-fault-activo {
+    display: block;
+}
+.formulary-validation {
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+
+}
+.formulary-msj {
+    height: 45px;
+    line-height: 45px;
+    background: #eb1b1b;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+}
+
+.formulary-msj-activo {
+    display: block;
+
+}
+
+a {
+    font-size: 20px;
+    text-decoration: none;
+    margin: 10px 20px 10px 0px;
+    color: white;
+}
 

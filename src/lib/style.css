@@ -5,7 +5,7 @@
 
 body {
   background: #070B29;
-  
+  font-family: 'Mandali', sans-serif;
 }
 .logo img {
   position: absolute;
@@ -67,7 +67,7 @@ body {
 }
  .formulary-validation {
   position: absolute;
-  right: 15px;
+  right: 35px;
   bottom: 20px;
   z-index: 100;
   font-size: 16px;
@@ -107,7 +107,18 @@ body {
    max-width: 100%;
    border-radius: 7px;
  }
-
+  .formulary-name-input-correcto .formulary-validation {
+   color: #1ED83B;
+   opacity: 1 ;
+  }
+  .formulary-name-input-incorrecto .formulary-validation {
+    color: red;
+    opacity: 1;
+  }
+  .formulary-name-input-incorrecto .formulary-input {
+    border: 3px solid red;
+  }
+  /*ZONA RESPONSIVE*/
 @media (max-width:667px) {
   .logo img {
     width: 90%;
@@ -167,7 +178,7 @@ body {
 }
  .formulary-validation {
   position: absolute;
-  right: 15px;
+  right: 35px;
   bottom: 20px;
   z-index: 100;
   font-size: 16px;

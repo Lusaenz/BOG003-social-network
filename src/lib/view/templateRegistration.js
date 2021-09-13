@@ -74,6 +74,7 @@ export const registration = () => {
   const expression = {
     // eslint-disable-next-line
     user: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
+    // eslint-disable-next-line no-useless-escape
     lasName: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
     email: /^[a-zA-Z0-9_.+-]+@[zA-Z0-9-.]+$/, // 7 a 14 numeros.
     password: /^,{4,12}$/, // 4 a 12 digitos.
@@ -83,7 +84,8 @@ export const registration = () => {
     switch (e.target.name) {
       case 'user':
         if (expression.user.test()) {
-         } else {
+          
+        } else {
         //   div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto');
          }
         break;

@@ -4,14 +4,14 @@ import { registration } from './view/templateRegistration.js';
 
 const showTemplate = (hash) => {
   const containerRoot = document.getElementById('root');
-  containerRoot.innerHTML = login();
+  containerRoot.innerHTML = '';
 
   switch (hash) {
     case '#/':
       containerRoot.innerHTML = login();
       break;
     case '#/Registrate-aqui':
-      containerRoot.innerHTML = registration();
+      containerRoot.appendChild(registration());
       break;
     default:
       containerRoot.innerText = 'Pagina no existente';

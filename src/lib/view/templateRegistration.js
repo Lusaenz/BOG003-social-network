@@ -66,6 +66,7 @@ export const registration = () => {
           <button><i class="fab fa-google"></i> Registrate con google</button>
         </div>
     </section>`;
+
   const formularyRegistration = document.querySelector('#register-second-page');
   console.log(formularyRegistration);
   const inputs = document.querySelectorAll('.formulary-name-input input');

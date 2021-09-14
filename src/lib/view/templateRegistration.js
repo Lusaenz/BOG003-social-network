@@ -26,7 +26,7 @@ export const registration = () => {
     <div class="formulary-name" id="formulary-email">
       <label for="email" class="formulary-label"></label>
       <div class="formulary-name-input">
-        <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico" maxlength="16">
+        <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
       <p class="formulary-fault">El correo electronico debe ser gmail.</p>
@@ -38,7 +38,8 @@ export const registration = () => {
         <input type="password" class="formulary-input" name="password" id="password" placeholder="Contraseña" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
-      <p class="formulary-fault">la Contraseña debe tener maximo 16 digitos y debe de tener mayusculas y minusculas o alguno de los siguientes simbolos /_.@.</p>
+      <p class="formulary-fault">La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula
+      NO puede tener otros símbolos.</p>
     </div>
 
     <div class="formulary-name" id="formulary-passwordConfirmation">
@@ -73,10 +74,11 @@ export const registration = () => {
     // eslint-disable-next-line
     user:/^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
     // eslint-disable-next-line
-    lasName: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
-    email: /^[a-zA-Z0-9_.+-]+@[zA-Z0-9-.]+$/, // 7 a 14 numeros.
-    password: /^,{4,12}$/, // 4 a 12 digitos.
-    passwordConfirmation: /^,{4,12}$/, // 4 a 12 digitos.
+    lastName: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
+    // eslint-disable-next-line
+    email: /^([\w]*[\w\.]*(?!\.)@gmail.com)/, // 7 a 14 numeros.
+    password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
+    passwordConfirmation: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
   };
   const formularyValidator = (e) => {
     switch (e.target.name) {
@@ -96,24 +98,73 @@ export const registration = () => {
         }
         break;
       case 'lastName':
+        if (expression.lastName.test(e.target.value)) {
+          div.querySelector('#formulary-lastName').classList.remove('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-lastName').classList.add('formulary-name-input-correcto');
+          div.querySelector('#formulary-lastName i').classList.add('fa-check-circle');
+          div.querySelector('#formulary-lastName i').classList.remove('fa-skull-crossbones');
+          div.querySelector('#formulary-lastName .formulary-fault').classList.remove('formulary-fault-activo');
+        } else {
+          div.querySelector('#formulary-lastName').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-lastName').classList.remove('formulary-name-input-correcto');
+          div.querySelector('#formulary-lastName i').classList.remove('fa-check-circle');
+          div.querySelector('#formulary-lastName i').classList.add('fa-skull-crossbones');
+          div.querySelector('#formulary-lastName .formulary-fault').classList.add('formulary-fault-activo');
+        }
 
         break;
       case 'email':
         if (expression.email.test(e.target.value)) {
-          console.log('hola email');
+          div.querySelector('#formulary-email').classList.remove('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-email').classList.add('formulary-name-input-correcto');
+          div.querySelector('#formulary-email i').classList.add('fa-check-circle');
+          div.querySelector('#formulary-email i').classList.remove('fa-skull-crossbones');
+          div.querySelector('#formulary-email .formulary-fault').classList.remove('formulary-fault-activo');
         } else {
-          div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-email').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-email').classList.remove('formulary-name-input-correcto');
+          div.querySelector('#formulary-email i').classList.remove('fa-check-circle');
+          div.querySelector('#formulary-email i').classList.add('fa-skull-crossbones');
+          div.querySelector('#formulary-email .formulary-fault').classList.add('formulary-fault-activo');
         }
+
         break;
       case 'password':
+        if (expression.password.test(e.target.value)) {
+          div.querySelector('#formulary-password').classList.remove('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-password').classList.add('formulary-name-input-correcto');
+          div.querySelector('#formulary-password i').classList.add('fa-check-circle');
+          div.querySelector('#formulary-password i').classList.remove('fa-skull-crossbones');
+          div.querySelector('#formulary-password .formulary-fault').classList.remove('formulary-fault-activo');
+        } else {
+          div.querySelector('#formulary-password').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-password').classList.remove('formulary-name-input-correcto');
+          div.querySelector('#formulary-password i').classList.remove('fa-check-circle');
+          div.querySelector('#formulary-password i').classList.add('fa-skull-crossbones');
+          div.querySelector('#formulary-password .formulary-fault').classList.add('formulary-fault-activo');
+        }
 
         break;
       case 'passwordConfirmation':
+        if (expression.passwordConfirmation.test(e.target.value)) {
+          div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-correcto');
+          div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-check-circle');
+          div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-skull-crossbones');
+          div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.remove('formulary-fault-activo');
+        } else {
+          div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-correcto');
+          div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-check-circle');
+          div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-skull-crossbones');
+          div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.add('formulary-fault-activo');
+        }
 
         break;
       default:
     }
   };
+
   inputs.forEach((input) => {
     input.addEventListener('keyup', formularyValidator);
     input.addEventListener('blur', formularyValidator);

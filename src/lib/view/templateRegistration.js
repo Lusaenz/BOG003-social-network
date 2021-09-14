@@ -7,17 +7,17 @@ export const registration = () => {
 
     <div class="formulary-name" id="formulary-name">
       <label for="usuario" class="formulary-label"></label>
-      <div class="furmulary-input">
-        <input type="text" class="formulary-input" name="user" id="usuario" placeholder="Nombre" maxlength="16">
+      <div class="formulary-name-input">
+        <input type="text" class="formulary-input" name="user" id="user" placeholder="Nombre" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
-      <p class="formulary-fault">El nombre tiene que ser de 3 a 16 digitos,solo se debe contener letras.</p>
+      <p class="formulary-fault">El nombre tiene que ser de 4 a 16 digitos, puede contener letras guion y guion_bajo.</p>
     </div>
 
-    <div class="formulary-name" id="formulary-LastName">
+    <div class="formulary-name" id="formulary-lastName">
       <label for="LastName" class="formulary-label"></label>
-      <div class="furmulary-name-input">
-        <input type="text" class="formulary-input" name="LastName" id="LastName" placeholder="Apellido" maxlength="16">
+      <div class="formulary-name-input">
+        <input type="text" class="formulary-input" name="lastName" id="lastName" placeholder="Apellido" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
       <p class="formulary-fault">El Apellido tiene que ser de 3 a 16 digitos,solo se debe contener letras.</p>
@@ -25,7 +25,7 @@ export const registration = () => {
 
     <div class="formulary-name" id="formulary-email">
       <label for="email" class="formulary-label"></label>
-      <div class="furmulary-name-input">
+      <div class="formulary-name-input">
         <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
@@ -34,7 +34,7 @@ export const registration = () => {
 
     <div class="formulary-name" id="formulary-password">
       <label for="password" class="formulary-label"></label>
-      <div class="furmulary-name-input">
+      <div class="formulary-name-input">
         <input type="password" class="formulary-input" name="password" id="password" placeholder="Contraseña" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
@@ -43,7 +43,7 @@ export const registration = () => {
 
     <div class="formulary-name" id="formulary-passwordConfirmation">
       <label for="passwordConfirmation" class="formulary-label"></label>
-      <div class="furmulary-name-input">
+      <div class="formulary-name-input">
         <input type="password" class="formulary-input" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirmar Contraseña" maxlength="16">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
@@ -67,14 +67,12 @@ export const registration = () => {
   const div = document.createElement('div');
   div.innerHTML = countRegister;
   const formularyRegistration = div.querySelector('#register-second-page');
-  console.log(formularyRegistration);
   const inputs = div.querySelectorAll('.formulary-name-input input');
-  console.log(inputs);
 
   const expression = {
     // eslint-disable-next-line
-    user: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
-    // eslint-disable-next-line no-useless-escape
+    user:/^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
+    // eslint-disable-next-line
     lasName: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
     email: /^[a-zA-Z0-9_.+-]+@[zA-Z0-9-.]+$/, // 7 a 14 numeros.
     password: /^,{4,12}$/, // 4 a 12 digitos.
@@ -83,17 +81,29 @@ export const registration = () => {
   const formularyValidator = (e) => {
     switch (e.target.name) {
       case 'user':
-        if (expression.user.test()) {
-          
+        if (expression.user.test(e.target.value)) {
+          div.querySelector('#formulary-name').classList.remove('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-name').classList.add('formulary-name-input-correcto');
+          div.querySelector('#formulary-name i').classList.add('fa-check-circle');
+          div.querySelector('#formulary-name i').classList.remove('fa-skull-crossbones');
+          div.querySelector('#formulary-name .formulary-fault').classList.remove('formulary-fault-activo');
         } else {
-        //   div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto');
-         }
+          div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto');
+          div.querySelector('#formulary-name').classList.remove('formulary-name-input-correcto');
+          div.querySelector('#formulary-name i').classList.remove('fa-check-circle');
+          div.querySelector('#formulary-name i').classList.add('fa-skull-crossbones');
+          div.querySelector('#formulary-name .formulary-fault').classList.add('formulary-fault-activo');
+        }
         break;
       case 'lastName':
 
         break;
       case 'email':
-
+        if (expression.email.test(e.target.value)) {
+          console.log('hola email');
+        } else {
+          div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto');
+        }
         break;
       case 'password':
 

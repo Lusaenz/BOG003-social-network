@@ -80,6 +80,25 @@ export const registration = () => {
     password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
     passwordConfirmation: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
   };
+  const validationPassword = () => {
+    const inputPassword = div.querySelector('#password');
+    const inputPasswordOne = div.querySelector('#passwordConfirmation');
+
+    if (inputPassword.value !== inputPasswordOne.value) {
+      div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-incorrecto');
+      div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-correcto');
+      div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-check-circle');
+      div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-skull-crossbones');
+      div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.add('formulary-fault-activo');
+    } else {
+      div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-incorrecto');
+      div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-correcto');
+      div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-check-circle');
+      div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-skull-crossbones');
+      div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.remove('formulary-fault-activo');
+    }
+  };
+
   const formularyValidator = (e) => {
     switch (e.target.name) {
       case 'user':
@@ -143,23 +162,11 @@ export const registration = () => {
           div.querySelector('#formulary-password i').classList.add('fa-skull-crossbones');
           div.querySelector('#formulary-password .formulary-fault').classList.add('formulary-fault-activo');
         }
+        validationPassword();
 
         break;
       case 'passwordConfirmation':
-        if (expression.passwordConfirmation.test(e.target.value)) {
-          div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-incorrecto');
-          div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-correcto');
-          div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-check-circle');
-          div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-skull-crossbones');
-          div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.remove('formulary-fault-activo');
-        } else {
-          div.querySelector('#formulary-passwordConfirmation').classList.add('formulary-name-input-incorrecto');
-          div.querySelector('#formulary-passwordConfirmation').classList.remove('formulary-name-input-correcto');
-          div.querySelector('#formulary-passwordConfirmation i').classList.remove('fa-check-circle');
-          div.querySelector('#formulary-passwordConfirmation i').classList.add('fa-skull-crossbones');
-          div.querySelector('#formulary-passwordConfirmation .formulary-fault').classList.add('formulary-fault-activo');
-        }
-
+        validationPassword();
         break;
       default:
     }

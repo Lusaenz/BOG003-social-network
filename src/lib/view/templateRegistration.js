@@ -84,8 +84,7 @@ export const registration = () => {
     switch (e.target.name) {
       case 'user':
         if (expression.user.test(e.target.value)) {
-          console.log(expression.user.test(e.target.value));
-        } else {
+} else {
         //   div.querySelector('#formulary-name').classList.add('formulary-name-input-incorrecto'); 
         }
         break;

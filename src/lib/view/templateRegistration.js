@@ -182,3 +182,5 @@ export const registration = () => {
   });
   return div;
 };
+
+/* export const registrationGoogle = */

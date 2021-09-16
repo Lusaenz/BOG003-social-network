@@ -16,6 +16,29 @@
 
   <script type="module" src="main.js"></script>
   <script type="module" src="index.js"></script>
-  <!-- <script type="module" src="validationFormulary.js"></script> -->
+
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> 
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  //import { initializeApp } from "https://www.gstatic.com/firebasejs/8.10/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAKdD8b0ztqKlwc0ITvPraAJ2j0i-K8aWw",
+    authDomain: "filmsppro.firebaseapp.com",
+    projectId: "filmsppro",
+    storageBucket: "filmsppro.appspot.com",
+    messagingSenderId: "53181921552",
+    appId: "1:53181921552:web:80a6ab9aa17c8476a14d95",
+    measurementId: "G-WQW7KXQ9XN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

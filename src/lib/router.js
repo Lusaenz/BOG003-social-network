@@ -5,10 +5,9 @@ import { registration } from './view/templateRegistration.js';
 const showTemplate = (hash) => {
   const containerRoot = document.getElementById('root');
   containerRoot.innerHTML = '';
-
   switch (hash) {
     case '#/':
-      containerRoot.innerHTML = login();
+      containerRoot.appendChild(login());
       break;
     case '#/Registrate-aqui':
       containerRoot.appendChild(registration());

@@ -1,3 +1,5 @@
+import { registration } from '../lib/view/templateRegistration.js';
+
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
@@ -24,5 +26,31 @@ export const loginGoogle = () => {
       console.log('error', errorMessage);
       // ...
     });
-  return loginGoogle();
+  return loginGoogle;
+};
+export const userRegister = (email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+    // Signed in
+      const user = userCredential.user;
+      console.log(user,'usuario');
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage, 'tu');
+    // ..
+    });
+  return userRegister;
+};
+
+export const RegisterVerification = () => {
+  firebase.auth().currentUser.sendEmailVerification().then(() => {
+  // Email verification sent
+
+    // ...
+
+  });
+  return RegisterVerification;
 };

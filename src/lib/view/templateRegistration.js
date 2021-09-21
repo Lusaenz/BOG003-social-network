@@ -1,3 +1,5 @@
+import { RegisterVerification, userRegister } from '../firebase.js';
+
 export const registration = () => {
   const countRegister = `
   <div class="logo">
@@ -100,6 +102,7 @@ export const registration = () => {
   };
 
   const formularyValidator = (e) => {
+    // console.log('hola');
     switch (e.target.name) {
       case 'user':
         if (expression.user.test(e.target.value)) {
@@ -146,7 +149,6 @@ export const registration = () => {
           div.querySelector('#formulary-email i').classList.add('fa-skull-crossbones');
           div.querySelector('#formulary-email .formulary-fault').classList.add('formulary-fault-activo');
         }
-
         break;
       case 'password':
         if (expression.password.test(e.target.value)) {
@@ -176,10 +178,16 @@ export const registration = () => {
     input.addEventListener('keyup', formularyValidator);
     input.addEventListener('blur', formularyValidator);
   });
-
-  formularyRegistration.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const btnRegister = div.querySelector('.btn-validation');
+  btnRegister.addEventListener('click', () => {
+    const userEmail = document.querySelector('#email').value;
+    const userPassword = document.querySelector('#password').value;
+    userRegister(userEmail, userPassword);
   });
+  /* formularyRegistration.addEventListener('submit', (e) => {
+    e.preventDefault();
+  }); */
+
   return div;
 };
 

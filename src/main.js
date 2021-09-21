@@ -2,7 +2,7 @@
 
 import { myFunction } from './index.js';
 import { login } from './lib/view/templateLogin.js';
-import { registration } from './lib/view/templateRegistration.js';
+// import { registration } from './lib/view/templateRegistration.js';
 import { changeRouter } from './lib/router.js';
 
 // document.getElementById('root').innerHTML = registration();

@@ -182,8 +182,11 @@ export const registration = () => {
   btnRegister.addEventListener('click', () => {
     const userEmail = document.querySelector('#email').value;
     const userPassword = document.querySelector('#password').value;
+    // const userName = document.querySelector('#user').value;
     userRegister(userEmail, userPassword);
+    // RegisterVerification(userEmail);
   });
+
   /* formularyRegistration.addEventListener('submit', (e) => {
     e.preventDefault();
   }); */

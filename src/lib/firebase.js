@@ -33,24 +33,29 @@ export const userRegister = (email, password) => {
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
-      console.log(user,'usuario');
+      console.log(user, 'usuario');
     // ...
     })
-    .catch((error) => {
+    .then(function(){
+      RegisterVerification()
+      console.log(RegisterVerification)
+    });
+      /*.catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage, 'tu');
     // ..
-    });
+    }); */
   return userRegister;
 };
 
 export const RegisterVerification = () => {
-  firebase.auth().currentUser.sendEmailVerification().then(() => {
-  // Email verification sent
+  firebase.auth().currentUser.sendEmailVerification()
+    .then(() => {
+    // Email verification sent
 
-    // ...
+      // ...
 
-  });
+    });
   return RegisterVerification;
 };

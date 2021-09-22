@@ -28,34 +28,44 @@ export const loginGoogle = () => {
     });
   return loginGoogle;
 };
-export const userRegister = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-    // Signed in
-      const user = userCredential.user;
-      console.log(user, 'usuario');
-    // ...
-    })
-    .then(function(){
-      RegisterVerification()
-      console.log(RegisterVerification)
+
+/* export const RegisterVerification = (name) => {
+  // const name = firebase.auth().currentUser.displayName;
+  userCredential.user.updateProfile
+  console.log(name);
+  firebase.auth().currentUser.sendEmailVerification()
+    .then(() => {
+      // Email verification sent
+      // ...
     });
-      /*.catch((error) => {
+  return RegisterVerification;
+}; */
+export const userRegister = (email, password, userName) => {
+  const userCreation = firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      userCredential.user.updateProfile({
+        displayName: userName,
+      }).then(() => {
+        const btnUrl = {
+          url:'http://localhost:5000',
+        };
+     firebase.auth().currentUser.sendEmailVerification(btnUrl);
+
+  });
+ });
+    // eslint-disable-next-line
+    /* .then(function () {
+      RegisterVerification();
+      console.log(RegisterVerification);
+    }); */
+  // eslint-disable-next-line
+  /*.catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage, 'tu');
     // ..
     }); */
-  return userRegister;
-};
-
-export const RegisterVerification = () => {
-  firebase.auth().currentUser.sendEmailVerification()
-    .then(() => {
-    // Email verification sent
-
-      // ...
-
-    });
-  return RegisterVerification;
+  return userCreation;
 };

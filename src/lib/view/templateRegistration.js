@@ -1,4 +1,4 @@
-import { RegisterVerification, userRegister } from '../firebase.js';
+import { userRegister } from '../firebase.js';
 
 export const registration = () => {
   const countRegister = `
@@ -182,9 +182,9 @@ export const registration = () => {
   btnRegister.addEventListener('click', () => {
     const userEmail = document.querySelector('#email').value;
     const userPassword = document.querySelector('#password').value;
-    // const userName = document.querySelector('#user').value;
-    userRegister(userEmail, userPassword);
-    // RegisterVerification(userEmail);
+    const userName = document.querySelector('#user').value;
+    userRegister(userEmail, userPassword, userName);
+   // RegisterVerification(userName);
   });
 
   /* formularyRegistration.addEventListener('submit', (e) => {

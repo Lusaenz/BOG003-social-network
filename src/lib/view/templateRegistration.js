@@ -1,4 +1,6 @@
 import { userRegister } from '../firebase.js';
+// import { confirmMessage } from './templetMessage.js';
+// import { confirmMessage } from './templetMessage.js';
 
 export const registration = () => {
   const countRegister = `
@@ -56,6 +58,8 @@ export const registration = () => {
     <div class="formulary-msj" id="formulary-msj">
       <p><b>Error:</b>Por completar el formulario.</p>
     </div>
+    <div class= "error">
+    </div>
 
     <div class=" formulary-name btn-register">
       <button type="submit" class="btn-validation">Registrarte</button>
@@ -69,7 +73,6 @@ export const registration = () => {
 
   const div = document.createElement('div');
   div.innerHTML = countRegister;
-  const formularyRegistration = div.querySelector('#register-second-page');
   const inputs = div.querySelectorAll('.formulary-name-input input');
 
   const expression = {
@@ -183,14 +186,14 @@ export const registration = () => {
     const userEmail = document.querySelector('#email').value;
     const userPassword = document.querySelector('#password').value;
     const userName = document.querySelector('#user').value;
-    userRegister(userEmail, userPassword, userName);
-   // RegisterVerification(userName);
+    userRegister(userEmail, userPassword, userName).catch(() => {
+      const fauld = document.querySelector('.error');
+      fauld.textContent = 'Usuario ya existente, crea otro';
+    });
+    document.querySelector('#register-second-page').classList.remove('.register-second-page');
+    console.log('hola');
+    // document.querySelector('#register-second-page').classList.add()
   });
-
-  /* formularyRegistration.addEventListener('submit', (e) => {
-    e.preventDefault();
-  }); */
-
   return div;
 };
 

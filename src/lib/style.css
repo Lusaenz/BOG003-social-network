@@ -98,11 +98,11 @@ body {
   text-decoration: none;
   font-size: 20px;
  }
- .btn-google {
+ .btnRegister-google {
    margin: auto;
    padding: 10px;
  }
- .btn-google button {
+ .btnRegister-google button {
    padding: 10px;
    max-width: 100%;
    border-radius: 7px;
@@ -211,11 +211,11 @@ body {
   color: aliceblue;
   text-decoration: none;
  }
- .btn-google {
+ .btnRegister-google {
    margin: auto;
    padding: 10px;
  }
- .btn-google button {
+ .btnRegister-google button {
    padding: 10px;
    max-width: 100%;
    border-radius: 7px;
@@ -231,6 +231,13 @@ body {
  .formulary-name-input-incorrecto .formulary-input {
    border: 3px solid red;
  }
+}
+.register-second-page {
+  display: block;
+}
+.confirmMessage {
+  display: none;
+  color: aliceblue;
 }
 
 

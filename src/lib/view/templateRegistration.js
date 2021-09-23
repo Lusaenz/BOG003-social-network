@@ -1,4 +1,5 @@
-import { userRegister } from '../firebase.js';
+import { userRegister, loginGoogle } from '../firebase.js';
+
 // import { confirmMessage } from './templetMessage.js';
 // import { confirmMessage } from './templetMessage.js';
 
@@ -7,6 +8,10 @@ export const registration = () => {
   <div class="logo">
     <img src="img/FILMPRO.png" alt="logo" width="350">
   </div>
+  <div class="confirmMessage">
+     <p>Hemos enviado un correo electronico a tu cuenta, porfavor verifica tu direccion de correo electronico, gracias.</p>
+  </div>
+  
   <section id="register-second-page" class="register-second-page">
 
     <div class="formulary-name" id="formulary-name">
@@ -65,7 +70,7 @@ export const registration = () => {
       <button type="submit" class="btn-validation">Registrarte</button>
     </div>
 
-    <div class="btn-google">
+    <div id="btnRegister-google" class="btnRegister-google">
       <button><i class="fab fa-google"></i> Registrate con google</button>
     </div>
 
@@ -190,10 +195,16 @@ export const registration = () => {
       const fauld = document.querySelector('.error');
       fauld.textContent = 'Usuario ya existente, crea otro';
     });
-    document.querySelector('#register-second-page').classList.remove('.register-second-page');
-    console.log('hola');
-    // document.querySelector('#register-second-page').classList.add()
+    const containerFormulary = document.querySelector('.register-second-page');
+    const containerMessage = document.querySelector('.confirmMessage');
+    containerFormulary.style.display = 'none';
+    containerMessage.style.display = 'block';
   });
+  const btnRegisterGoogle = document.querySelector('#btnRegister-google');
+  btnRegisterGoogle.addEventListener('click', () => {
+    console.log('holaaaa');
+    loginGoogle();
+  }); 
   return div;
 };
 

@@ -1,12 +1,12 @@
 import { userRegister, loginGoogle } from '../firebase.js';
-
-// import { confirmMessage } from './templetMessage.js';
-// import { confirmMessage } from './templetMessage.js';
-
+// ***********CONTENEDOR DE TODO EL FORMULARIO DE REGISTRO************
 export const registration = () => {
   const countRegister = `
   <div class="logo">
     <img src="img/FILMPRO.png" alt="logo" width="350">
+  </div>
+  <div class="photo-two">
+    <img src="img/git-photo-two.gif" alt="photo-two" width="250">
   </div>
   <div class="confirmMessage">
      <p>Hemos enviado un correo electronico a tu cuenta, porfavor verifica tu direccion de correo electronico, gracias.</p>
@@ -67,7 +67,7 @@ export const registration = () => {
     </div>
 
     <div class=" formulary-name btn-register">
-      <button type="submit" class="btn-validation">Registrarte</button>
+      <button class="btn-validation">Registrarte</button>
     </div>
 
     <div id="btnRegister-google" class="btnRegister-google">
@@ -76,10 +76,12 @@ export const registration = () => {
 
   </section>`;
 
+  // ********CREACION DE UN DIV PARA EL LLAMADO DEL DOM*******
   const div = document.createElement('div');
   div.innerHTML = countRegister;
   const inputs = div.querySelectorAll('.formulary-name-input input');
 
+  // ****************EXPRESIONES REGULARES*****************
   const expression = {
     // eslint-disable-next-line
     user:/^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
@@ -90,6 +92,7 @@ export const registration = () => {
     password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
     passwordConfirmation: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
   };
+  // ************VALIDACION DE AMBAS CONTRASEÑAS DEL FORMULARIO**************
   const validationPassword = () => {
     const inputPassword = div.querySelector('#password');
     const inputPasswordOne = div.querySelector('#passwordConfirmation');
@@ -109,8 +112,8 @@ export const registration = () => {
     }
   };
 
+  // *******VALIDACION CON EXPRESIONES DEL FORMULARIO (NOMBRE-APELLIDO-CORREO ELECTRONICO)********
   const formularyValidator = (e) => {
-    // console.log('hola');
     switch (e.target.name) {
       case 'user':
         if (expression.user.test(e.target.value)) {
@@ -182,10 +185,13 @@ export const registration = () => {
     }
   };
 
+  // ******LLAMADO DE LOS INPUTS PARA LOS EVENTOS DE TECLA Y CLICK FUERA DEL FORMULARIO*****
   inputs.forEach((input) => {
     input.addEventListener('keyup', formularyValidator);
     input.addEventListener('blur', formularyValidator);
   });
+
+  // **EVENTO DEL BOTON DE REGISTRO PARA GUARDAR DATOS DEL USUARIO Y ENVIAR CORREO DE VERIFICACION**
   const btnRegister = div.querySelector('.btn-validation');
   btnRegister.addEventListener('click', () => {
     const userEmail = document.querySelector('#email').value;
@@ -195,17 +201,21 @@ export const registration = () => {
       const fauld = document.querySelector('.error');
       fauld.textContent = 'Usuario ya existente, crea otro';
     });
+    // ***SE MUESTRA UN MENSAJE AL USUARIO PARA CONFIRMAR EL CORREO ELECTRONICO***
     const containerFormulary = document.querySelector('.register-second-page');
     const containerMessage = document.querySelector('.confirmMessage');
+    const photoTwo = document.querySelector('.photo-two');
+    const logo = document.querySelector('.logo');
     containerFormulary.style.display = 'none';
+    logo.style.display = 'none';
     containerMessage.style.display = 'block';
+    photoTwo.style.display = 'block';
   });
-  const btnRegisterGoogle = document.querySelector('#btnRegister-google');
+
+  // ********FUNCION DE REGISTRO CON GOOGLE*********
+  const btnRegisterGoogle = div.querySelector('#btnRegister-google');
   btnRegisterGoogle.addEventListener('click', () => {
-    console.log('holaaaa');
     loginGoogle();
-  }); 
+  });
   return div;
 };
-
-/* export const registrationGoogle = */

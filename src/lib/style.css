@@ -6,6 +6,7 @@ body {
   background: #070B29;
   font-family: 'Mandali', sans-serif;
 }
+/* CONTENEDOR DE LOS ESTILOS DE AMBOS FORMULARIOS */
 .logo img {
   position: absolute;
   margin-left: 10%;
@@ -14,7 +15,7 @@ body {
 }
 .register-second-page { 
   display: grid;
-  background:#494747;    
+  background:#494747;
   width: 40%;
   padding: 11px;
   padding-bottom: 30px;
@@ -83,7 +84,7 @@ body {
   display: block;
  }
  .btn-register {
-  background: #3F719F;
+  background: #199442;
   text-align: center;
   border-radius: 8px;
   font-weight: bold;
@@ -93,7 +94,7 @@ body {
  }
  .btn-register button {
    border: none;
-  background: #3F719F;
+  background: #199442;
   color: aliceblue;
   text-decoration: none;
   font-size: 20px;
@@ -118,7 +119,14 @@ body {
   .formulary-name-input-incorrecto .formulary-input {
     border: 3px solid red;
   }
-  /*ZONA RESPONSIVE*/
+  .register-second-page {
+    display: block;
+  }
+  .confirmMessage {
+    display: none;
+    color: aliceblue;
+  }
+  /*CONTENDOR DE TODA LA PAGINA RESPONSIVE*/
 @media (max-width:640px) {
   .logo img {
     width: 90%;
@@ -148,12 +156,12 @@ body {
   background: #C4C4C4;
   border: 3px solid transparent;
   border-radius: 5px;
-  height: 45px;
+  height: 40px;
   line-height: 50px;
   padding: 0 10px 0px 10px;
   transition: .3s ease all;
   font-size: 15px;
-  margin-bottom: 4%;
+  margin-bottom: 1%;
   margin-left: 15px;
  }
  .formulary-input:focus {
@@ -171,8 +179,10 @@ body {
 
  .formulary-fault {
   font-size: 12px;
-  margin-bottom: 0;
+  margin-top: -3%;
+  margin-left: 8%;
   display: none;
+  color: #f8e7e7;
  }
 .formulary-fault-activo {
   display: block;
@@ -180,7 +190,7 @@ body {
  .formulary-validation {
   position: absolute;
   right: 35px;
-  bottom: 35px;
+  bottom: 25px;
   z-index: 100;
   font-size: 16px;
   opacity: 0;
@@ -197,7 +207,7 @@ body {
   display: block;
  }
  .btn-register {
-  background: #3F719F;
+  background: #199442;
   text-align: center;
   font-size: 20px;
   border-radius: 8px;
@@ -206,10 +216,15 @@ body {
   margin: auto;
   width: 70%;
  }
- .btn-register a {
+ .btn-register {
   border: none;
   color: aliceblue;
   text-decoration: none;
+ }
+ .btn-register-here {
+   color: #199442;
+   margin-left: 25%;
+   font-size: 20px;
  }
  .btnRegister-google {
    margin: auto;
@@ -217,8 +232,15 @@ body {
  }
  .btnRegister-google button {
    padding: 10px;
+   margin-left: 12%;
    max-width: 100%;
-   border-radius: 7px;
+   border-radius: 22px;
+   font-size: 17px;
+ }
+ .error {
+   color: #f8e7e7;
+   text-align: center;
+   padding-bottom: 10px;
  }
  .formulary-name-input-correcto .formulary-validation {
   color: #1ED83B;
@@ -231,13 +253,24 @@ body {
  .formulary-name-input-incorrecto .formulary-input {
    border: 3px solid red;
  }
-}
-.register-second-page {
+ .register-second-page {
   display: block;
-}
+ }
 .confirmMessage {
   display: none;
-  color: aliceblue;
+  color: rgb(63, 221, 111);
+  font-size: 18px;
+  text-align: center;
+ }
+ .logo {
+   display: block;
+ }
+ .photo-two {
+   display: none;
+    margin-left: 13%;
+    margin-top: 50%;
+    position: relative;
+ }
 }
 
 

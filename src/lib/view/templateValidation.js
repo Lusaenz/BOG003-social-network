@@ -8,7 +8,7 @@ export const messageConfirmation = () => {
       <p>Hemos enviado un correo electronico a tu cuenta, porfavor verifica tu direccion de correo electronico, gracias.</p>
     </div>
   </section>`;
-  const containerMessage = document.createElement('section');
+  const containerMessage = document.createElement('div');
   containerMessage.innerHTM = messageEmail;
   return containerMessage;
 };

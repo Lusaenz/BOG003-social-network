@@ -18,7 +18,7 @@ const showTemplate = (hash) => {
       containerRoot.innerHTML = (home());
       break;
     case '#/Confirmacion':
-      containerRoot.innerHTML = (messageConfirmation());
+      containerRoot.appendChild(messageConfirmation());
       break;
     default:
       containerRoot.innerText = 'Pagina no existente';

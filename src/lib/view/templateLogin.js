@@ -31,7 +31,7 @@ export const login = () => {
     <a class="btn-register-here" href="#/Registrate-aqui">Registrate aqui</a>
   
     <div id="loginGoogle" class="btnRegister-google">
-      <button><i class="fab fa-google"></i> Registrate con google</button>
+      <button><i class="fab fa-google"></i> Iniciar sesion con google</button>
     </div>
   
   </section>`;

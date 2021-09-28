@@ -31,7 +31,7 @@ export const registration = () => {
         <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
-      <p class="formulary-fault">El correo electronico debe ser gmail.</p>
+      <p class="formulary-fault">El correo electronico debe ser valido.</p>
     </div>
 
     <div class="formulary-name" id="formulary-password">
@@ -81,7 +81,7 @@ export const registration = () => {
     // eslint-disable-next-line
     lastName: /^[a-zA-Z\_\-]{4,16}$/, // Letras guion y guion_bajo.
     // eslint-disable-next-line
-    email: /^([\w]*[\w\.]*(?!\.)@gmail.com)/, // 7 a 14 numeros.
+    email: /^([\w]*[\w\.]*(?!\.)@)/, // 7 a 14 numeros.
     password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
     passwordConfirmation: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // 4 a 12 digitos.
   };

@@ -27,7 +27,8 @@ export const home = () => {
     </section>
   </main>
   <footer class="container-footer">
-    <p><b>Hecho por:</b>Leidy Paez-Luisa Saenz-Maria chacon</p>
+    <p><b>Desarrollado por:</b>
+    Leidy Paez-Luisa Saenz-Maria Chacon</p>
     <hr>
     <p>Derechos de autor reservados © 2021</p>
   </footer>

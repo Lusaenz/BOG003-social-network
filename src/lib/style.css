@@ -1,4 +1,5 @@
 * {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -253,7 +254,7 @@ body {
  .formulary-name-input-incorrecto .formulary-input {
    border: 3px solid red;
  }
- .register-second-page {
+ /*.register-second-page {
   display: block;
  }
 .confirmMessage {
@@ -270,8 +271,40 @@ body {
     margin-left: 13%;
     margin-top: 50%;
     position: relative;
+ }*/
+ .header {
+   background: aliceblue;
+   padding: 2px;
  }
+ nav ul {
+   display: flex;
+   justify-content: space-around;
+   list-style: none;
+   margin-left: 80%;
+   font-size: 25px;
+   color: rgb(16, 163, 107);
+   margin-right: 20%;
+ }
+ nav ul li i {
+padding-left: 20px; 
 }
+ .logo-words {
+   position: absolute;
+   padding: 15px 25px 0px 20px;
+ }
+ .publication {
+   padding: 20px;
+   background: indianred;
+ }
+ .publication textarea {
+   padding: 30px;
+ }
+ .parallax {
+ background: linear-gradient( to right, rgba(121, 119, 119, 0.75), rgba(68, 75, 151, 0.75)), url('img/parallax-pelicula.jpg');
+ }
+
+}
+
 
 
 

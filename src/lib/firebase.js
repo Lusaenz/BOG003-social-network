@@ -26,6 +26,7 @@ export const userRegister = (email, password, userName) => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
+      window.location.hash = '#/Confirmacion';
       userCredential.user.updateProfile({
         displayName: userName,
       }).then(() => {
@@ -41,12 +42,12 @@ export const userRegister = (email, password, userName) => {
       console.log(RegisterVerification);
     }); */
   // eslint-disable-next-line
-  /*.catch((error) => {
-      const errorCode = error.code;
+ /* .catch((error) => {
+    //  const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage, 'tu');
     // ..
-    }); */
+    });*/
   return userCreation;
 };
 

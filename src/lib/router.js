@@ -2,6 +2,7 @@
 import { login } from './view/templateLogin.js';
 import { registration } from './view/templateRegistration.js';
 import { home } from './view/templateHome.js';
+import { messageConfirmation } from './view/templateValidation.js';
 
 const showTemplate = (hash) => {
   const containerRoot = document.getElementById('root');
@@ -16,6 +17,9 @@ const showTemplate = (hash) => {
     case '#/Home':
       containerRoot.innerHTML = (home());
       break;
+    case '#/Confirmacion':
+      containerRoot.innerHTML = (messageConfirmation());
+      break;
     default:
       containerRoot.innerText = 'Pagina no existente';
   }
@@ -27,6 +31,8 @@ export const changeRouter = (hash) => {
   } else if (hash === '#/Registrate-aqui') {
     return showTemplate(hash);
   } else if (hash === '#/Home') {
+    return showTemplate(hash);
+  } else if (hash === '#/Confirmacion') {
     return showTemplate(hash);
   } else {
     return showTemplate(hash);

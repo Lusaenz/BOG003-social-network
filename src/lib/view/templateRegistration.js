@@ -5,13 +5,6 @@ export const registration = () => {
   <div class="logo">
     <img src="img/FILMPRO.png" alt="logo" width="350">
   </div>
-  <div class="photo-two">
-    <img src="img/git-photo-two.gif" alt="photo-two" width="250">
-  </div>
-  <div class="confirmMessage">
-     <p>Hemos enviado un correo electronico a tu cuenta, porfavor verifica tu direccion de correo electronico, gracias.</p>
-  </div>
-  
   <section id="register-second-page" class="register-second-page">
 
     <div class="formulary-name" id="formulary-name">
@@ -197,19 +190,19 @@ export const registration = () => {
     const userEmail = document.querySelector('#email').value;
     const userPassword = document.querySelector('#password').value;
     const userName = document.querySelector('#user').value;
-    userRegister(userEmail, userPassword, userName).catch(() => {
-      const fauld = document.querySelector('.error');
-      fauld.textContent = 'Usuario ya existente, crea otro';
-    });
-    // ***SE MUESTRA UN MENSAJE AL USUARIO PARA CONFIRMAR EL CORREO ELECTRONICO***
-    const containerFormulary = document.querySelector('.register-second-page');
-    const containerMessage = document.querySelector('.confirmMessage');
-    const photoTwo = document.querySelector('.photo-two');
-    const logo = document.querySelector('.logo');
-    containerFormulary.style.display = 'none';
-    logo.style.display = 'none';
-    containerMessage.style.display = 'block';
-    photoTwo.style.display = 'block';
+    userRegister(userEmail, userPassword, userName)
+      .catch((error) => {
+        const errorCode = error.code;
+        const completeField = document.querySelector('.error');
+        switch (errorCode) {
+          case 'auth/email-already-in-use':
+            completeField.innerHTML = 'Este correo ya se encuentra registrado';
+            break;
+          default:
+            completeField.innerHTML = '<b>Error:</b>Por completar el formulario.';
+            break;
+        }
+      });
   });
 
   // ********FUNCION DE REGISTRO CON GOOGLE*********
@@ -219,3 +212,17 @@ export const registration = () => {
   });
   return div;
 };
+
+/*   .catch((error) => {
+      const errorCode = error.code;
+      const completeField = document.querySelector('.error');
+      switch (errorCode) {
+        case 'auth/email-already-in-use':
+          completeField.innerHTML = 'Este correo ya se encuentra registrado';
+          break;
+        default:
+          completeField.innerHTML = '<b>Error:</b>Por completar el formulario.';
+          break;
+      }
+    });
+    */

@@ -9,6 +9,6 @@ export const messageConfirmation = () => {
     </div>
   </section>`;
   const containerMessage = document.createElement('div');
-  containerMessage.innerHTM = messageEmail;
+  containerMessage.innerHTML = messageEmail;
   return containerMessage;
 };

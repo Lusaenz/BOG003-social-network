@@ -120,18 +120,14 @@ body {
   .formulary-name-input-incorrecto .formulary-input {
     border: 3px solid red;
   }
-  .register-second-page {
-    display: block;
-  }
   .confirmMessage {
-    display: none;
-    color: aliceblue;
+    color: rgb(63, 221, 111);
   }
   /*CONTENDOR DE TODA LA PAGINA RESPONSIVE*/
 @media (max-width:640px) {
   .logo img {
-    width: 90%;
-    margin-left: 5%;
+    width: 70%;
+    margin-left: 15%;
     position: relative;
     opacity: 0.8;
   }
@@ -140,7 +136,7 @@ body {
   background:#494747;
   width: 93%;
   padding: 11px;
-  padding-bottom: 30px;
+  padding-bottom: 8px;
   margin: auto;
   border-radius: 10px;
   color: rgb(250, 248, 248);
@@ -228,15 +224,16 @@ body {
    font-size: 20px;
  }
  .btnRegister-google {
-   margin: auto;
    padding: 10px;
  }
  .btnRegister-google button {
    padding: 10px;
-   margin-left: 12%;
+   padding-left: 50px;
+   padding-right: 50px;
    max-width: 100%;
    border-radius: 22px;
-   font-size: 17px;
+   font-size: 15px;
+   border: none;
  }
  .error {
    color: #f8e7e7;
@@ -254,24 +251,16 @@ body {
  .formulary-name-input-incorrecto .formulary-input {
    border: 3px solid red;
  }
- /*.register-second-page {
-  display: block;
- }
 .confirmMessage {
-  display: none;
   color: rgb(63, 221, 111);
   font-size: 18px;
   text-align: center;
  }
- .logo {
-   display: block;
- }
  .photo-two {
-   display: none;
     margin-left: 13%;
     margin-top: 50%;
     position: relative;
- }*/
+ }
  .header {
    background: #070B29;
    padding: 2px;
@@ -323,12 +312,12 @@ padding-left: 20px;
    border: none;
  }
  .parallax {
-  background: linear-gradient( to right, rgba(121, 119, 119, 0.75), rgba(68, 75, 151, 0.75)), url('img/pelicula.jpg');
+  background: linear-gradient( to right, rgba(121, 119, 119, 0.75), rgba(68, 75, 151, 0.75)), url('img/img-piolin.jpeg');
   background-attachment: fixed;
   background-position: 100% 30%;
   background-size: cover;
   height: 85%;
-  }
+}
  .container-footer {
    color: #C4C4C4;
    text-align: center;

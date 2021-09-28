@@ -199,7 +199,7 @@ export const registration = () => {
             completeField.innerHTML = 'Este correo ya se encuentra registrado';
             break;
           default:
-            completeField.innerHTML = '<b>Error:</b>Por completar el formulario.';
+            completeField.innerHTML = '<b>Error:</b> Por Favor completar el formulario.';
             break;
         }
       });

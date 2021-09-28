@@ -4,18 +4,11 @@ export const loginGoogle = () => {
   firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
+      window.location.hash = '#/Home';
       /** @type {firebase.auth.OAuthCredential} */
       // This gives you a Google Access Token. You can use it to access the Google API.
       const user = result.user;
-      console.log('user', user);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      // const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      // const email = error.email;
-      console.log('error', errorMessage);
+      return user;
     });
   return loginGoogle;
 };
@@ -36,21 +29,9 @@ export const userRegister = (email, password, userName) => {
         firebase.auth().currentUser.sendEmailVerification(btnUrl);
       });
     });
-    // eslint-disable-next-line
-    /* .then(function () {
-      RegisterVerification();
-      console.log(RegisterVerification);
-    }); */
-  // eslint-disable-next-line
- /* .catch((error) => {
-    //  const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage, 'tu');
-    // ..
-    });*/
   return userCreation;
 };
-
+// **FUNCION QUE VERIFICA SI EL CORREO ELECTRONICO SE ENCUENTRA REGISTRADO**
 export const loginUser = (emailLogin, passwordLogin) => {
   const validationUserLogin = firebase
     .auth()
@@ -59,7 +40,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
     // Signed in
       const user = userCredential.user;
       window.location.hash = '#/Home';
-      console.log(user, 'usuario');
+      return user;
     });
   return validationUserLogin;
 };

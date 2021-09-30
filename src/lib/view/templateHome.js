@@ -1,3 +1,5 @@
+import { datePost } from '../firebase.js';
+
 export const home = () => {
   const wall = ` 
   <header class="header">
@@ -12,16 +14,17 @@ export const home = () => {
     </nav>
   </header>
   <main>
+  <div class="error"></div>
     <section class="publication parallax">
       <article class="space-mjs">
         <div class="edit">
           <button>Editar</button>
         </div>
         <div>
-          <textarea name="" id="" placeholder="Cuéntanos cual fue la ultima película que viste, danos tu critica"></textarea>
+          <textarea name="" id="input-post" placeholder="Cuéntanos cual fue la ultima película que viste, danos tu critica"></textarea>
         </div>
         <div class="share">
-          <button>Publicar</button>
+          <button id="btn-publication">Publicar</button>
         </div>
       </article>
     </section>
@@ -35,5 +38,22 @@ export const home = () => {
   `;
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
-  return wall;
+
+  const btnPublication = containerHome.querySelector('#btn-publication');
+  btnPublication.addEventListener('click', () => {
+    const inputPost = document.querySelector('#input-post').value;
+    const namUser = firebase.auth().currentUser.displayName;
+    const uid = firebase.auth().currentUser.uid;
+    datePost(inputPost, namUser, uid)
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorPost = document.querySelector('.error');
+        switch (errorCode) {
+          default:
+            errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
+            break;
+        }
+      });
+  });
+  return containerHome;
 };

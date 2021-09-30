@@ -15,7 +15,7 @@ const showTemplate = (hash) => {
       containerRoot.appendChild(registration());
       break;
     case '#/Home':
-      containerRoot.innerHTML = (home());
+      containerRoot.appendChild(home());
       break;
     case '#/Confirmacion':
       containerRoot.appendChild(messageConfirmation());

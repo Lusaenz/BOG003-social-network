@@ -44,3 +44,15 @@ export const loginUser = (emailLogin, passwordLogin) => {
     });
   return validationUserLogin;
 };
+export const datePost = (nameuid, content, uid) => {
+  const db = firebase.firestore();
+  db.collection("posts").add({
+    namePost: nameuid,
+    contentPost: content,
+    uidUser: uid,
+    like: [],
+  })
+    .then(() => {
+      // console.log(db);
+    });
+};

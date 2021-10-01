@@ -46,7 +46,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
 };
 export const datePost = (nameuid, content, uid) => {
   const db = firebase.firestore();
-  db.collection("posts").add({
+  db.collection('posts').add({
     namePost: nameuid,
     contentPost: content,
     uidUser: uid,

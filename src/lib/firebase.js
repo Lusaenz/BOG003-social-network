@@ -53,6 +53,10 @@ export const datePost = (nameuid, content, uid) => {
     like: [],
   })
     .then(() => {
-      // console.log(db);
+      console.log('hola');
+    })
+    .catch((error) => {
+      console.log(error);
     });
+  return db;
 };

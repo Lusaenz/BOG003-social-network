@@ -14,7 +14,6 @@ export const home = () => {
     </nav>
   </header>
   <main>
-  <div class="error"></div>
     <section class="publication parallax">
       <article class="space-mjs">
         <div class="edit">
@@ -23,6 +22,7 @@ export const home = () => {
         <div>
           <textarea name="" id="input-post" placeholder="Cuéntanos cual fue la ultima película que viste, danos tu critica"></textarea>
         </div>
+        <div class="error"></div>
         <div class="share">
           <button id="btn-publication">Publicar</button>
         </div>
@@ -44,16 +44,14 @@ export const home = () => {
     const inputPost = document.querySelector('#input-post').value;
     const namUser = firebase.auth().currentUser.displayName;
     const uid = firebase.auth().currentUser.uid;
-    datePost(inputPost, namUser, uid)
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorPost = document.querySelector('.error');
-        switch (errorCode) {
-          default:
-            errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
-            break;
-        }
-      });
+    const errorPost = document.querySelector('.error');
+    if (inputPost === '') {
+      errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
+    } else {
+      datePost(namUser, inputPost, uid);
+      errorPost.innerHTML = '';
+    }
   });
+
   return containerHome;
 };

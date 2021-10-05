@@ -1,4 +1,4 @@
-import { dataPost, receiveData, showData } from '../firebase.js';
+import { dataPost, receiveData } from '../firebase.js';
 
 export const home = () => {
   const wall = ` 
@@ -23,8 +23,12 @@ export const home = () => {
         <div class="share">
           <button id="btn-publication">Publicar</button>
         </div>
-        <div class="containerText"></div>
-        <div class ="container-comment"></div>
+      </article>
+    </section>
+    <section class="publication parallax">
+     <article "space-mjs">
+       <div class="containerText"></div>
+      <div class ="container-comment"></div>
       </article>
     </section>
   </main>
@@ -35,6 +39,33 @@ export const home = () => {
     <p>Derechos de autor reservados © 2021</p>
   </footer>x
   `;
+  const viewPost = () => {
+    const nameComment = firebase.auth().currentUser.displayName;
+    const containerText = document.querySelector('.containerText');
+    containerText.innerHTML = '';
+    containerText.innerHTML += nameComment;
+    const userUid = firebase.auth().currentUser.uid;
+    const containerComment = document.querySelector('.container-comment');
+    const userPost = document.querySelector('#input-post').value;
+    containerComment.innerHTML = '';
+    containerComment.innerHTML += userPost;
+    /* `<section id="container-comment" class="publication parallax hiden">
+          <article class="space-mjs">
+          <div class="edit">
+            <button>Editar</button>
+         </div>
+          <div>
+            <textarea name="" id="input-post"></textarea>
+          </div>
+          <div class="icono-medal"><i class="fas fa-medal"></i></div>
+          <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+          </article>
+          <button><i class="fas fa-theater-masks"></i></button>
+        </section>
+      `;
+     */
+    return nameComment;
+  };
 
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
@@ -49,38 +80,10 @@ export const home = () => {
     } else {
       dataPost(namUser, inputPost, uid);
       errorPost.innerHTML = '';
+      receiveData();
+      viewPost();
     }
   });
-
-  /* receiveData().showData((doublePost) => {
-    const nameComment = firebase.auth().currentUser.displayName;
-    const containerText = document.querySelector(".containerText");
-    containerText.innerHTML = '';
-    containerText.innerHTML += `
-     <p>${"nameuid"}</p>
-     `;
-    console.log("nameuid");
-    const userUid = firebase.auth().currentUser.uid;
-    const containerComment = document.querySelector(".container-comment");
-    containerComment.innerHTML = '';
-    doublePost.forEach((doc) => {
-      containerComment.innerHTML += `
-       <section id="container-comment" class="publication parallax hiden">
-         <article class="space-mjs">
-         <div class="edit">
-           <button>Editar</button>
-        </div>
-         <div>
-           <textarea name="" id="input-post"></textarea>
-         </div>
-         <div class="icono-medal"><i class="fas fa-medal"></i></div>
-         <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
-         </article>
-         <button><i class="fas fa-theater-masks"></i></button>
-       </section>
-     `;
-    });
-  }); */
 
   return containerHome;
 };

@@ -65,11 +65,12 @@ export const receiveData = () => {
     });
   return receive;
 };
-export const showData = () => {
+/* export const showData = () => {
+  console.log('hola');
   const db = firebase.firestore();
-  const show = db.collection('posts').doc()
+  const show = db.collection('posts').doc('user')
     .onSnapshot((doc) => {
       console.log('Current data:', doc.data());
     });
   return show;
-};
+}; */

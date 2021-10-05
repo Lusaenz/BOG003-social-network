@@ -44,7 +44,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
     });
   return validationUserLogin;
 };
-export const datePost = (nameuid, content, uid) => {
+export const dataPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
   console.log(db);
   db.collection('posts').add({
@@ -52,12 +52,24 @@ export const datePost = (nameuid, content, uid) => {
     contentPost: content,
     uidUser: uid,
     like: [],
-  })
-    .then(() => {
-      // console.log('hola');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  });
   return db;
+};
+export const receiveData = () => {
+  const db = firebase.firestore();
+  const receive = db.collection('posts').get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data());
+      });
+    });
+  return receive;
+};
+export const showData = () => {
+  const db = firebase.firestore();
+  const show = db.collection('posts').doc()
+    .onSnapshot((doc) => {
+      console.log('Current data:', doc.data());
+    });
+  return show;
 };

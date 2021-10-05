@@ -1,5 +1,4 @@
 import { dataPost, receiveData, showData } from '../firebase.js';
-
 export const home = () => {
   const wall = ` 
   <header class="header">
@@ -49,11 +48,10 @@ export const home = () => {
     } else {
       dataPost(namUser, inputPost, uid);
       errorPost.innerHTML = '';
-
     }
   });
 
-  receiveData().showData((doublePost) => {
+  receiveData().onSnapShot((doublePost) => {
     const nameComment = firebase.auth().currentUser.displayName;
     const containerText = document.querySelector(".containerText");
     containerText.innerHTML = "";

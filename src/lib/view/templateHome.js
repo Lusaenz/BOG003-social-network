@@ -51,7 +51,7 @@ export const home = () => {
       errorPost.innerHTML = '';
     }
   });
-  getposts().onSnapshot(( doublePost ) => {
+  /* getposts().onSnapshot((doublePost) => {
     const nameComment = firebase.auth().currentUser.displayName;
     const containerText = document.querySelector('.containerText');
     containerText.innerHTML = '';
@@ -78,7 +78,7 @@ export const home = () => {
       </section>
     `;
     });
-  });
+  }); */
 
   return containerHome;
 };

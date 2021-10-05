@@ -46,6 +46,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
 };
 export const datePost = (nameuid, content, uid) => {
   const db = firebase.firestore();
+  console.log(db);
   db.collection('posts').add({
     namePost: nameuid,
     contentPost: content,
@@ -53,7 +54,7 @@ export const datePost = (nameuid, content, uid) => {
     like: [],
   })
     .then(() => {
-      console.log('hola');
+      // console.log('hola');
     })
     .catch((error) => {
       console.log(error);

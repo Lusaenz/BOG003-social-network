@@ -44,19 +44,19 @@ export const loginUser = (emailLogin, passwordLogin) => {
     });
   return validationUserLogin;
 };
-export const datePost = (nameuid, content, uid) => {
+
+export const dataPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
   db.collection('posts').add({
     namePost: nameuid,
     contentPost: content,
     uidUser: uid,
     like: [],
-  })
-    .then(() => {
-      console.log('hola');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  });
+  console.log(dataPost(nameuid, content, uid));
   return db;
+};
+
+export const showPost = (id) => {
+  firebase.firestore().collection('posts').doc(id).get();
 };

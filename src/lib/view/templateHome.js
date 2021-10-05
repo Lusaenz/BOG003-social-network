@@ -1,4 +1,4 @@
-import { datePost } from '../firebase.js';
+import { dataPost } from '../firebase.js';
 
 export const home = () => {
   const wall = ` 
@@ -35,9 +35,9 @@ export const home = () => {
     <p>Derechos de autor reservados © 2021</p>
   </footer>x
   `;
+
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
-
   const btnPublication = containerHome.querySelector('#btn-publication');
   btnPublication.addEventListener('click', () => {
     const inputPost = document.querySelector('#input-post').value;
@@ -47,38 +47,40 @@ export const home = () => {
     if (inputPost === '') {
       errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
     } else {
-      datePost(namUser, inputPost, uid);
+      dataPost(namUser, inputPost, uid);
       errorPost.innerHTML = '';
     }
   });
-  getposts().onSnapshot(( doublePost ) => {
-    const nameComment = firebase.auth().currentUser.displayName;
-    const containerText = document.querySelector('.containerText');
-    containerText.innerHTML = '';
-    containerText.innerHTML += `
-    <p>${nameuid}</p> 
-    `;
-    const userUid = firebase.auth().currentUser.uid;
-    const containerComment = document.querySelector('.container-comment');
-    containerComment.innerHTML = '';
-    doublePost.forEach((doc) => {
-      containerComment.innerHTML += `
-      <section id="container-comment" class="publication parallax hiden">
-        <article class="space-mjs">
-        <div class="edit">
-          <button>Editar</button>
-        </div>
-        <div>
-          <textarea name="" id="input-post"></textarea>
-        </div>
-        <div class="icono-medal"><i class="fas fa-medal"></i></div>
-        <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
-        </article>
-        <button><i class="fas fa-theater-masks"></i></button>
-      </section>
-    `;
-    });
-  });
+
+  // llamadaDeId(firebase.auth().currentUser.uid).onSnapshot((doublePost) => {
+  //   const nameComment = firebase.auth().currentUser.displayName;
+  //   const containerText = document.querySelector('.containerText');
+  //   containerText.innerHTML = '';
+  //   containerText.innerHTML += `
+  //   <p>${'nameuid'}</p>
+  //   `;
+  // console.log('nameuid');
+  //   const userUid = firebase.auth().currentUser.uid;
+  //   const containerComment = document.querySelector('.container-comment');
+  //   containerComment.innerHTML = '';
+  //   doublePost.forEach((doc) => {
+  //     containerComment.innerHTML += `
+  //     <section id="container-comment" class="publication parallax hiden">
+  //       <article class="space-mjs">
+  //       <div class="edit">
+  //         <button>Editar</button>
+  //       </div>
+  //       <div>
+  //         <textarea name="" id="input-post"></textarea>
+  //       </div>
+  //       <div class="icono-medal"><i class="fas fa-medal"></i></div>
+  //       <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+  //       </article>
+  //       <button><i class="fas fa-theater-masks"></i></button>
+  //     </section>
+  //   `;
+  //   });
+  // });
 
   return containerHome;
 };

@@ -1,7 +1,6 @@
 import { dataPost, receiveData } from '../firebase.js';
-
 export const home = () => {
-  const wall = ` 
+  const wall = `
   <header class="header">
     <nav>
       <div class="logo-words">
@@ -25,12 +24,7 @@ export const home = () => {
         </div>
       </article>
     </section>
-    <section class="publication parallax">
-     <article "space-mjs">
-       <div class="containerText"></div>
-      <div class ="container-comment"></div>
-      </article>
-    </section>
+    <div class ="container-comment"></div>
   </main>
   <footer class="container-footer">
     <p><b>Desarrollado por:</b>
@@ -39,36 +33,10 @@ export const home = () => {
     <p>Derechos de autor reservados © 2021</p>
   </footer>x
   `;
-  const viewPost = () => {
-    const nameComment = firebase.auth().currentUser.displayName;
-    const containerText = document.querySelector('.containerText');
-    containerText.innerHTML = '';
-    containerText.innerHTML += nameComment;
-    // const userUid = firebase.auth().currentUser.uid;
-    const containerComment = document.querySelector('.container-comment');
-    const userPost = document.querySelector('#input-post').value;
-    containerComment.innerHTML = '';
-    containerComment.innerHTML += userPost;
-    /* `<section id="container-comment" class="publication parallax hiden">
-          <article class="space-mjs">
-          <div class="edit">
-            <button>Editar</button>
-         </div>
-          <div>
-            <textarea name="" id="input-post"></textarea>
-          </div>
-          <div class="icono-medal"><i class="fas fa-medal"></i></div>
-          <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
-          </article>
-          <button><i class="fas fa-theater-masks"></i></button>
-        </section>
-      `;
-     */
-    return nameComment;
-  };
 
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
+  containerHome.innerHTML += receiveData();
   const btnPublication = containerHome.querySelector('#btn-publication');
   btnPublication.addEventListener('click', () => {
     const inputPost = document.querySelector('#input-post').value;
@@ -80,10 +48,32 @@ export const home = () => {
     } else {
       dataPost(namUser, inputPost, uid);
       errorPost.innerHTML = '';
-      receiveData();
-      viewPost();
     }
   });
-
   return containerHome;
+};
+
+export const allDataPost = (valuePost) => {
+  const containerComment = document.querySelector('.container-comment');
+  const targetDiv = document.createElement('div');
+  const textPost = document.createElement('p');
+  targetDiv.setAttribute('class', 'publication parallax');
+  targetDiv.innerHTML = `<p>${valuePost.namePost}</p>`;
+  textPost.innerHTML = `<p>${valuePost.contentPost}</p>`;
+  // targetDiv.innerHTML = `<p>${valuePost.contentPost}</p>`;
+  targetDiv.innerHTML += `
+        <section id="container-comment" class="publication parallax hiden">
+          <article class="space-mjs">
+            <div class="edit">
+              <button>Editar</button>
+            </div>
+            <div>
+              <textarea name="" id="input-post"></textarea>
+            </div>
+            <div class="icono-medal"><i class="fas fa-medal"></i></div>
+            <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+          </article>
+          <button><i class="fas fa-theater-masks"></i></button>
+        </section>`;
+  containerComment.appendChild(targetDiv);
 };

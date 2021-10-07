@@ -1,3 +1,5 @@
+import { allDataPost } from './view/templateHome.js';
+
 export const loginGoogle = () => {
   // ***FUNCION PARA EL INICIO DE SESION CON GOOGLE Y GUARDAR DATOS EN FIREBASE***
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -5,7 +7,6 @@ export const loginGoogle = () => {
     .signInWithPopup(provider)
     .then((result) => {
       window.location.hash = '#/Home';
-      /** @type {firebase.auth.OAuthCredential} */
       // This gives you a Google Access Token. You can use it to access the Google API.
       const user = result.user;
       return user;
@@ -46,7 +47,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
 };
 export const dataPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
-  console.log(db);
+  // console.log(db);
   db.collection('posts').add({
     namePost: nameuid,
     contentPost: content,
@@ -55,22 +56,15 @@ export const dataPost = (nameuid, content, uid) => {
   });
   return db;
 };
+
 export const receiveData = () => {
   const db = firebase.firestore();
   const receive = db.collection('posts').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
+        allDataPost(doc.data());
+        // console.log(doc.id, '=>', doc.data());
       });
     });
   return receive;
 };
-/* export const showData = () => {
-  console.log('hola');
-  const db = firebase.firestore();
-  const show = db.collection('posts').doc('user')
-    .onSnapshot((doc) => {
-      console.log('Current data:', doc.data());
-    });
-  return show;
-}; */

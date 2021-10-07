@@ -44,7 +44,7 @@ export const home = () => {
     const containerText = document.querySelector('.containerText');
     containerText.innerHTML = '';
     containerText.innerHTML += nameComment;
-    const userUid = firebase.auth().currentUser.uid;
+    // const userUid = firebase.auth().currentUser.uid;
     const containerComment = document.querySelector('.container-comment');
     const userPost = document.querySelector('#input-post').value;
     containerComment.innerHTML = '';

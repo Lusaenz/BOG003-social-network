@@ -31,7 +31,7 @@ export const home = () => {
     Leidy Paez-Luisa Saenz-Maria Chacon</p>
     <hr>
     <p>Derechos de autor reservados © 2021</p>
-  </footer>x
+  </footer>
   `;
 
   const containerHome = document.createElement('div');
@@ -39,15 +39,19 @@ export const home = () => {
   containerHome.innerHTML += receiveData();
   const btnPublication = containerHome.querySelector('#btn-publication');
   btnPublication.addEventListener('click', () => {
-    const inputPost = document.querySelector('#input-post').value;
+    const inputPost = document.querySelector('#input-post');
     const namUser = firebase.auth().currentUser.displayName;
     const uid = firebase.auth().currentUser.uid;
     const errorPost = document.querySelector('.error');
-    if (inputPost === '') {
+    if (inputPost.value === '') {
       errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
     } else {
-      dataPost(namUser, inputPost, uid);
       errorPost.innerHTML = '';
+      dataPost(namUser, inputPost.value, uid);
+      const containerComment = document.querySelector('.container-comment');
+      containerComment.innerHTML = '';
+      receiveData();
+      inputPost.value = '';
     }
   });
   return containerHome;
@@ -56,24 +60,21 @@ export const home = () => {
 export const allDataPost = (valuePost) => {
   const containerComment = document.querySelector('.container-comment');
   const targetDiv = document.createElement('div');
-  const textPost = document.createElement('p');
   targetDiv.setAttribute('class', 'publication parallax');
-  targetDiv.innerHTML = `<p>${valuePost.namePost}</p>`;
-  textPost.innerHTML = `<p>${valuePost.contentPost}</p>`;
-  // targetDiv.innerHTML = `<p>${valuePost.contentPost}</p>`;
   targetDiv.innerHTML += `
-        <section id="container-comment" class="publication parallax hiden">
+        <section id="container-comment" class="publication parallax">
           <article class="space-mjs">
             <div class="edit">
               <button>Editar</button>
             </div>
+              <p class="name-post">${valuePost.namePost}</p>
             <div>
-              <textarea name="" id="input-post"></textarea>
+              <p id="input-post" class="comment-post">${valuePost.contentPost}</p>
             </div>
             <div class="icono-medal"><i class="fas fa-medal"></i></div>
             <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
           </article>
-          <button><i class="fas fa-theater-masks"></i></button>
+          <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
         </section>`;
   containerComment.appendChild(targetDiv);
 };

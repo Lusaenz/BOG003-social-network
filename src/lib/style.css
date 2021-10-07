@@ -297,10 +297,11 @@ padding-left: 20px;
    border-radius: 10px;
  }
  .edit button  {
+   position: absolute;
    border: none;
    background: none;
    color: #C4C4C4;
-   margin-left: 80%;
+   margin-left: 55%;
    font-size: 17px;
  }
  .share button {
@@ -326,9 +327,12 @@ padding-left: 20px;
  .container-footer b {
    display: block;
  }
-  /* .container-comment {
-    border: 1px solid red;
-  }  */
+  .name-post {
+    color: #C4C4C4;
+    padding-top:  1px;
+    position: absolute;
+    
+  }
 }
 
 

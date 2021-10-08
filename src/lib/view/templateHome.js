@@ -1,4 +1,4 @@
-import { dataPost, receiveData } from '../firebase.js';
+import { dataPost, receiveData, deletePost} from '../firebase.js';
 export const home = () => {
   const wall = `
   <header class="header">
@@ -72,7 +72,7 @@ export const allDataPost = (valuePost) => {
                 <p class="name-post">${valuePost.namePost}</p>
               </div>
             <div>
-              <p id="input-post" class="comment-post">${valuePost.contentPost}</p>
+              <textarea id="input-post" class="comment-post" disabled>${valuePost.contentPost}</textarea>
             </div>
             <div class="icons-comment">
               <div class="icono-medal"><i class="fas fa-medal"></i></div>
@@ -81,4 +81,8 @@ export const allDataPost = (valuePost) => {
           </article>
         </section>`;
   containerComment.appendChild(targetDiv);
+  const iconoDelete = containerComment.querySelector('.icono-delete');
+  iconoDelete.addEventListener('click', () => {
+    deletePost(valuePost.id);
+  });
 };

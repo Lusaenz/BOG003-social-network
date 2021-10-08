@@ -32,6 +32,7 @@ export const userRegister = (email, password, userName) => {
     });
   return userCreation;
 };
+
 // **FUNCION QUE VERIFICA SI EL CORREO ELECTRONICO SE ENCUENTRA REGISTRADO**
 export const loginUser = (emailLogin, passwordLogin) => {
   const validationUserLogin = firebase
@@ -45,6 +46,8 @@ export const loginUser = (emailLogin, passwordLogin) => {
     });
   return validationUserLogin;
 };
+
+// ***********FUNCION DE CREAR COLECCION**************
 export const dataPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
   // console.log(db);
@@ -57,6 +60,7 @@ export const dataPost = (nameuid, content, uid) => {
   return db;
 };
 
+// ************FUNCION DE MOSTRAR LA FUNCION DENTRO DE LA TARGETA DE POST*********
 export const receiveData = () => {
   const db = firebase.firestore();
   const receive = db.collection('posts').get()
@@ -67,4 +71,20 @@ export const receiveData = () => {
       });
     });
   return receive;
+};
+
+// ********FUNCION QUE ELIMINA EL POST*******
+export const deletePost = (id) => {
+  const db = firebase.firestore();
+  const idPost = firebase.fireStore.collection('posts').doc.id;
+  console.log(idPost);
+  const deleteComment = db.collection('posts')
+    .doc(id).delete()
+    .then(() => {
+      console.log('Document successfully deleted!');
+    })
+    .catch((error) => {
+      console.error('Error removing document: ', error);
+    });
+  return deleteComment;
 };

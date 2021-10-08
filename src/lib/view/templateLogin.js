@@ -8,7 +8,7 @@ export const login = () => {
   <section id="login-first-page" class="register-second-page">
     <div class="formulary-name" id="formulary-email-login">
       <div class="formulary-name-input">
-        <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico">
+        <input type="text" class="formulary-input" name="email" id="email" placeholder="Correo electronico">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
       <p class="formulary-fault">El correo electronico debe ser gmail.</p>

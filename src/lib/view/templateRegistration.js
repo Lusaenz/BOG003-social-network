@@ -28,7 +28,7 @@ export const registration = () => {
     <div class="formulary-name" id="formulary-email">
       <label for="email" class="formulary-label"></label>
       <div class="formulary-name-input">
-        <input type="text" class="formulary-input" name="email" id="email" placeholder="correo electronico">
+        <input type="text" class="formulary-input" name="email" id="email" placeholder="Correo electronico">
         <i class="formulary-validation fas fa-skull-crossbones"></i>
       </div>
       <p class="formulary-fault">El correo electronico debe ser valido.</p>

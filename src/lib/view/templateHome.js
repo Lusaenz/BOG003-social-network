@@ -16,7 +16,7 @@ export const home = () => {
     <section class="publication parallax">
       <article class="space-mjs">
         <div>
-          <textarea name="" id="input-post" placeholder="Cuéntanos cual fue la ultima película que viste, danos tu critica"></textarea>
+          <textarea name="" id="input-post" placeholder="Cuéntanos cual fue la ultima película o serie que viste, danos tu critica"></textarea>
         </div>
         <div class="error"></div>
         <div class="share">
@@ -36,7 +36,7 @@ export const home = () => {
 
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
-  containerHome.innerHTML += receiveData();
+  receiveData();
   const btnPublication = containerHome.querySelector('#btn-publication');
   btnPublication.addEventListener('click', () => {
     const inputPost = document.querySelector('#input-post');
@@ -67,14 +67,18 @@ export const allDataPost = (valuePost) => {
             <div class="edit">
               <button>Editar</button>
             </div>
-              <p class="name-post">${valuePost.namePost}</p>
+              <div class="profile-user">
+                <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
+                <p class="name-post">${valuePost.namePost}</p>
+              </div>
             <div>
               <p id="input-post" class="comment-post">${valuePost.contentPost}</p>
             </div>
-            <div class="icono-medal"><i class="fas fa-medal"></i></div>
-            <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+            <div class="icons-comment">
+              <div class="icono-medal"><i class="fas fa-medal"></i></div>
+              <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+            </div>
           </article>
-          <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
         </section>`;
   containerComment.appendChild(targetDiv);
 };

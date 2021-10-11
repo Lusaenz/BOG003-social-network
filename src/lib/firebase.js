@@ -57,6 +57,9 @@ export const dataPost = (nameuid, content, uid) => {
     uidUser: uid,
     like: [],
   });
+  /* .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    }); */
   return db;
 };
 
@@ -66,7 +69,7 @@ export const receiveData = () => {
   const receive = db.collection('posts').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        allDataPost(doc.data());
+        allDataPost(doc.data(), doc.id);
         // console.log(doc.id, '=>', doc.data());
       });
     });
@@ -76,8 +79,8 @@ export const receiveData = () => {
 // ********FUNCION QUE ELIMINA EL POST*******
 export const deletePost = (id) => {
   const db = firebase.firestore();
-  const idPost = firebase.fireStore.collection('posts').doc.id;
-  console.log(idPost);
+  // const idPost = firebase.fireStore.collection('posts').doc.id;
+  // console.log('daletePost', id);
   const deleteComment = db.collection('posts')
     .doc(id).delete()
     .then(() => {
@@ -87,4 +90,21 @@ export const deletePost = (id) => {
       console.error('Error removing document: ', error);
     });
   return deleteComment;
+};
+
+export const removePost = () => {
+  const db = firebase.firestore();
+  const editPost = db.collection('posts').doc("");
+
+  // Set the "capital" field of the city 'DC'
+  return editPost.update({
+    contentPost: content,
+  })
+    .then(() => {
+      console.log('Document successfully updated!');
+    })
+    .catch((error) => {
+      // The document probably doesn't exist.
+      console.error('Error updating document: ', error);
+    });
 };

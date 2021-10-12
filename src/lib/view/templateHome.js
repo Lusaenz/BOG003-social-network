@@ -1,4 +1,4 @@
-import { dataPost, receiveData, deletePost} from '../firebase.js';
+import { dataPost, receiveData } from '../firebase.js';
 export const home = () => {
   const wall = `
   <header class="header">
@@ -83,6 +83,5 @@ export const allDataPost = (valuePost) => {
   containerComment.appendChild(targetDiv);
   const iconoDelete = containerComment.querySelector('.icono-delete');
   iconoDelete.addEventListener('click', () => {
-    deletePost(valuePost.id);
   });
 };

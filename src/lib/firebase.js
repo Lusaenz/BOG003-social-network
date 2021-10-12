@@ -72,19 +72,3 @@ export const receiveData = () => {
     });
   return receive;
 };
-
-// ********FUNCION QUE ELIMINA EL POST*******
-export const deletePost = (id) => {
-  const db = firebase.firestore();
-  const idPost = firebase.fireStore.collection('posts').doc.id;
-  console.log(idPost);
-  const deleteComment = db.collection('posts')
-    .doc(id).delete()
-    .then(() => {
-      console.log('Document successfully deleted!');
-    })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
-    });
-  return deleteComment;
-};

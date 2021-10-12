@@ -36,7 +36,7 @@ export const home = () => {
 
   const containerHome = document.createElement('div');
   containerHome.innerHTML = wall;
-  receiveData();
+  // receiveData();
   const btnPublication = containerHome.querySelector('#btn-publication');
   btnPublication.addEventListener('click', () => {
     const inputPost = document.querySelector('#input-post');
@@ -57,7 +57,7 @@ export const home = () => {
   return containerHome;
 };
 
-export const allDataPost = (valuePost) => {
+export const allDataPost = (valuePost, id) => {
   const containerComment = document.querySelector('.container-comment');
   const targetDiv = document.createElement('div');
   targetDiv.setAttribute('class', 'publication parallax');
@@ -76,12 +76,24 @@ export const allDataPost = (valuePost) => {
             </div>
             <div class="icons-comment">
               <div class="icono-medal"><i class="fas fa-medal"></i></div>
-              <div class="icono-delete"><i class="fas fa-trash-alt"></i></div>
+              <div class="icono-delete" data-id="${valuePost.id}"><i class="fas fa-trash-alt"></i></div>
             </div>
           </article>
         </section>`;
+  console.log(id);
   containerComment.appendChild(targetDiv);
+<<<<<<< HEAD
   const iconoDelete = containerComment.querySelector('.icono-delete');
   iconoDelete.addEventListener('click', () => {
+=======
+  let contentId = '';
+  const iconoDelete = containerComment.querySelectorAll('.icono-delete');
+  iconoDelete.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      // event.preventDefault();
+      contentId = event.target.dataset.id;
+      deletePost(contentId);
+    });
+>>>>>>> df78b901a118d35ec1a87c722dc2e8aa112c3599
   });
 };

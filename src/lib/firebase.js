@@ -1,5 +1,3 @@
-import { allDataPost } from './view/templateHome.js';
-
 export const loginGoogle = () => {
   // ***FUNCION PARA EL INICIO DE SESION CON GOOGLE Y GUARDAR DATOS EN FIREBASE***
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -51,36 +49,30 @@ export const loginUser = (emailLogin, passwordLogin) => {
 export const dataPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
   // console.log(db);
-  db.collection('posts').add({
+  const postComment = db.collection('posts').add({
     namePost: nameuid,
     contentPost: content,
     uidUser: uid,
     like: [],
   });
-  /* .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-    }); */
-  return db;
+  return postComment;
 };
 
 // ************FUNCION DE MOSTRAR LA FUNCION DENTRO DE LA TARGETA DE POST*********
 export const receiveData = () => {
   const db = firebase.firestore();
-  const receive = db.collection('posts').get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        allDataPost(doc.data(), doc.id);
-        // console.log(doc.id, '=>', doc.data());
-      });
-    });
+  const receive = db.collection('posts').get();
   return receive;
+};
+export const showPost = () => {
+  const db = firebase.firestore();
+  const show = db.collection('posts').onSnapshot();
+  return show;
 };
 
 // ********FUNCION QUE ELIMINA EL POST*******
 export const deletePost = (id) => {
   const db = firebase.firestore();
-  // const idPost = firebase.fireStore.collection('posts').doc.id;
-  // console.log('daletePost', id);
   const deleteComment = db.collection('posts')
     .doc(id).delete()
     .then(() => {
@@ -94,9 +86,7 @@ export const deletePost = (id) => {
 
 export const removePost = () => {
   const db = firebase.firestore();
-  const editPost = db.collection('posts').doc("");
-
-  // Set the "capital" field of the city 'DC'
+  const editPost = db.collection('posts').doc('');
   return editPost.update({
     contentPost: content,
   })

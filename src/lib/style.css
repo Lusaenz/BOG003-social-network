@@ -364,6 +364,7 @@ padding-left: 20px;
     font-size: 20px;
   }
   .icono-delete{
+    /* display: none; */
     color:#999898 ;
     font-size: 20px;
   }

@@ -75,8 +75,6 @@ export const receiveData = () => {
     });
   return receive;
 };
-<<<<<<< HEAD
-=======
 
 // ********FUNCION QUE ELIMINA EL POST*******
 export const deletePost = (id) => {
@@ -110,4 +108,3 @@ export const removePost = () => {
       console.error('Error updating document: ', error);
     });
 };
->>>>>>> df78b901a118d35ec1a87c722dc2e8aa112c3599

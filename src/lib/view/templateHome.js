@@ -82,10 +82,6 @@ export const allDataPost = (valuePost, id) => {
         </section>`;
   console.log(id);
   containerComment.appendChild(targetDiv);
-<<<<<<< HEAD
-  const iconoDelete = containerComment.querySelector('.icono-delete');
-  iconoDelete.addEventListener('click', () => {
-=======
   let contentId = '';
   const iconoDelete = containerComment.querySelectorAll('.icono-delete');
   iconoDelete.forEach((item) => {
@@ -94,6 +90,5 @@ export const allDataPost = (valuePost, id) => {
       contentId = event.target.dataset.id;
       deletePost(contentId);
     });
->>>>>>> df78b901a118d35ec1a87c722dc2e8aa112c3599
   });
 };

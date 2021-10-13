@@ -1,11 +1,12 @@
 import {
-  dataPost,
+  createPost,
   receiveData,
   deletePost,
   editPost,
 } from '../firebase.js';
 
 export const home = () => {
+  // elementos del HTML en el muro.
   const wall = `
   <header class="header">
     <nav>
@@ -50,14 +51,14 @@ export const home = () => {
           <section id="container-comment" class="publication parallax">
             <article class="space-mjs">
               <div class="edit">
-                <button class="btn-edit">Editar</button>
+                <button class="btn-edit" data-id="${doc.id}">Editar</button>
               </div>
                 <div class="profile-user">
                   <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
                   <p class="name-post">${doc.data().namePost}</p>
                 </div>
               <div>
-                <textarea id="input-post" class="comment-post" data-id="${doc.id}" disabled>${doc.data().contentPost}</textarea>
+                <textarea id="input-post" class="comment-post" disabled>${doc.data().contentPost}</textarea>
               </div>
               <div class="icons-comment">
                 <div class="icono-medal"><i class="fas fa-medal"></i></div>
@@ -68,8 +69,8 @@ export const home = () => {
           // console.log(doc.id);
           containerComment.appendChild(targetDiv);
           let contentId = '';
-          const iconoDelete = containerComment.querySelectorAll('.fa-trash-alt');
-          iconoDelete.forEach((item) => {
+          const iconDelete = containerComment.querySelectorAll('.fa-trash-alt');
+          iconDelete.forEach((item) => {
             item.addEventListener('click', (event) => {
               alert('Estas segur@ de eliminar esta publicacion');
               contentId = event.target.dataset.id;
@@ -83,11 +84,17 @@ export const home = () => {
           const btnEdit = containerComment.querySelectorAll('.btn-edit');
           btnEdit.forEach((btn) => {
             btn.addEventListener('click', (event) => {
-              const textareaEdit = containerComment.querySelector('#input-post');
-              containerComment.innerHTML = textareaEdit;
-              contentId = event.target.database.id;
+              const textareaEdit = containerComment.querySelector('#input-post').value;
+              contentId = event.target.dataset.id;
+              `
+             <textarea id="input-post">${onlyEdit}</textarea>`;
+
+              /* contentId = event.target.database.id;
               editPost(contentId).then(() => {
-              });
+                // paso1 = crear un bloque de codigo donde agregue el textarea para editar.
+                // paso2 = agregar un boton para aceptar los cambios.
+                // paso3 = agregar la funcion al boton de aceptar cambios de firebase.
+              }); */
             });
           });
         });
@@ -106,7 +113,7 @@ export const home = () => {
       errorPost.innerHTML = 'No se puede realizar publicaciones vacias';
     } else {
       errorPost.innerHTML = '';
-      dataPost(namUser, inputPost.value, uid).then(() => {
+      createPost(namUser, inputPost.value, uid).then(() => {
         const containerComment = document.querySelector('.container-comment');
         containerComment.innerHTML = '';
         allDataPost();

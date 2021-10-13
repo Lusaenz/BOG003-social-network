@@ -46,7 +46,7 @@ export const loginUser = (emailLogin, passwordLogin) => {
 };
 
 // ***********FUNCION DE CREAR COLECCION**************
-export const dataPost = (nameuid, content, uid) => {
+export const createPost = (nameuid, content, uid) => {
   const db = firebase.firestore();
   // console.log(db);
   const postComment = db.collection('posts').add({
@@ -64,11 +64,11 @@ export const receiveData = () => {
   const receive = db.collection('posts').get();
   return receive;
 };
-export const showPost = () => {
+/* export const showPost = () => {
   const db = firebase.firestore();
   const show = db.collection('posts').onSnapshot();
   return show;
-};
+}; */
 
 // ********FUNCION QUE ELIMINA EL POST*******
 export const deletePost = (id) => {
@@ -77,7 +77,7 @@ export const deletePost = (id) => {
     .doc(id).delete();
   return deleteComment;
 };
-
+// ********** FUNCION PARA EDITAR EL POST ****** //
 export const editPost = (id) => {
   const db = firebase.firestore();
   const edit = db.collection('posts').doc(id);

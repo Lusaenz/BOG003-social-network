@@ -48,7 +48,7 @@ export const home = () => {
           const targetDiv = document.createElement('div');
           targetDiv.setAttribute('class', 'publication parallax');
           targetDiv.innerHTML += `
-          <section id="container-comment" class="publication parallax">
+          <section id="post-${doc.id}" class="publication parallax">
             <article class="space-mjs">
               <div class="edit">
                 <button class="btn-edit" data-id="${doc.id}">Editar</button>
@@ -57,8 +57,8 @@ export const home = () => {
                   <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
                   <p class="name-post">${doc.data().namePost}</p>
                 </div>
-              <div>
-                <textarea id="input-post" class="comment-post" disabled>${doc.data().contentPost}</textarea>
+              <div id="${doc.id}">
+                <p id="input-${doc.id}" data-id="${doc.id}" class="comment-post">${doc.data().contentPost}</p>
               </div>
               <div class="icons-comment">
                 <div class="icono-medal"><i class="fas fa-medal"></i></div>
@@ -84,10 +84,16 @@ export const home = () => {
           const btnEdit = containerComment.querySelectorAll('.btn-edit');
           btnEdit.forEach((btn) => {
             btn.addEventListener('click', (event) => {
-              const textareaEdit = containerComment.querySelector('#input-post').value;
-              contentId = event.target.dataset.id;
-              `
-             <textarea id="input-post">${onlyEdit}</textarea>`;
+              const contentIdEdit = event.target.dataset.id;
+              console.log(event.target);
+              const post = document.querySelector(`#${contentIdEdit}`);
+              console.log(post);
+              const textareaEdit = containerComment.querySelector(`#input-${contentIdEdit}`).innerHTML;
+              console.log(textareaEdit);
+              // console.log(textareaEdit, 'estamos probando');
+              // const textareaEditValue = textareaEdit.value;
+              // console.log(event.target, textareaEdit);
+              post.innerHTML = `<textarea>${textareaEdit}</textarea>`;
 
               /* contentId = event.target.database.id;
               editPost(contentId).then(() => {

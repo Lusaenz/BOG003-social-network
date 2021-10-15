@@ -83,6 +83,7 @@ export const home = () => {
               });
             });
           });
+          //
           const btnEdit = containerComment.querySelectorAll('.btn-edit');
           const acceptChanges = containerComment.querySelector('.confirm-change');
           btnEdit.forEach((btn) => {

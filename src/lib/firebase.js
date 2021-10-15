@@ -78,6 +78,7 @@ export const deletePost = (id) => {
   return deleteComment;
 };
 // ********** FUNCION PARA EDITAR EL POST ****** //
+//
 export const editPost = (id, content) => {
   const db = firebase.firestore();
   const edit = db.collection('posts').doc(id);

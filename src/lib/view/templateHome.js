@@ -58,7 +58,10 @@ export const home = () => {
                   <p class="name-post">${doc.data().namePost}</p>
                 </div>
               <div id="${doc.id}">
-                <p id="input-${doc.id}" data-id="${doc.id}" class="comment-post">${doc.data().contentPost}</p>
+                <textarea id="input-${doc.id}" data-id="${doc.id}" class="comment-post" disabled >${doc.data().contentPost}</textarea>
+              </div>
+              <div class="btn-confirm-change">
+                <button class="confirm-change" data-id="${doc.id}">Aceptar cambios</button>
               </div>
               <div class="icons-comment">
                 <div class="icono-medal"><i class="fas fa-medal"></i></div>
@@ -66,7 +69,6 @@ export const home = () => {
               </div>
             </article>
           </section>`;
-          // console.log(doc.id);
           containerComment.appendChild(targetDiv);
           let contentId = '';
           const iconDelete = containerComment.querySelectorAll('.fa-trash-alt');
@@ -82,25 +84,22 @@ export const home = () => {
             });
           });
           const btnEdit = containerComment.querySelectorAll('.btn-edit');
+          const acceptChanges = containerComment.querySelector('.confirm-change');
           btnEdit.forEach((btn) => {
             btn.addEventListener('click', (event) => {
               const contentIdEdit = event.target.dataset.id;
-              console.log(event.target);
-              const post = document.querySelector(`#${contentIdEdit}`);
-              console.log(post);
-              const textareaEdit = containerComment.querySelector(`#input-${contentIdEdit}`).innerHTML;
-              console.log(textareaEdit);
-              // console.log(textareaEdit, 'estamos probando');
-              // const textareaEditValue = textareaEdit.value;
-              // console.log(event.target, textareaEdit);
-              post.innerHTML = `<textarea>${textareaEdit}</textarea>`;
-
-              /* contentId = event.target.database.id;
-              editPost(contentId).then(() => {
-                // paso1 = crear un bloque de codigo donde agregue el textarea para editar.
-                // paso2 = agregar un boton para aceptar los cambios.
-                // paso3 = agregar la funcion al boton de aceptar cambios de firebase.
-              }); */
+              const textareaEdit = containerComment.querySelector(`#input-${contentIdEdit}`);
+              textareaEdit.removeAttribute('disabled');
+              acceptChanges.style.display = 'block';
+              const btnConfirmEdit = containerComment.querySelectorAll('.confirm-change');
+              btnConfirmEdit.forEach((confirm) => {
+                confirm.addEventListener('click', async (e) => {
+                  const contentIdEditConfirm = e.target.dataset.id;
+                  await editPost(contentIdEditConfirm, textareaEdit.value);
+                  acceptChanges.style.display = 'none';
+                  textareaEdit.setAttribute('disabled', 'add-disabled');
+                });
+              });
             });
           });
         });

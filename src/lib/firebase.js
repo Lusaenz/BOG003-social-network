@@ -78,10 +78,17 @@ export const deletePost = (id) => {
   return deleteComment;
 };
 // ********** FUNCION PARA EDITAR EL POST ****** //
-export const editPost = (id) => {
+export const editPost = (id, content) => {
   const db = firebase.firestore();
   const edit = db.collection('posts').doc(id);
   return edit.update({
-    // contentPost: content,
-  });
+    contentPost: content,
+  })
+    .then(() => {
+      console.log("Document successfully updated!");
+    })
+    .catch((error) => {
+      // The document probably doesn't exist.
+      console.error("Error updating document: ", error);
+    });
 };

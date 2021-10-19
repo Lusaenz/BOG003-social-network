@@ -383,9 +383,9 @@ padding-left: 20px;
     font-size: 30px;
     color: white;
   }
-  /*  */
+  
   .confirm-change {
-    display: none;
+    display: none; 
     position: absolute;
     margin-left: 17%;
     margin-top: 3%;

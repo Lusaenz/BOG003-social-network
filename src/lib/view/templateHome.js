@@ -61,10 +61,11 @@ export const home = () => {
                 <textarea id="input-${doc.id}" data-id="${doc.id}" class="comment-post" disabled >${doc.data().contentPost}</textarea>
               </div>
               <div class="btn-confirm-change">
-                <button class="confirm-change" data-id="${doc.id}">Aceptar cambios</button>
+                <button id="btn-confirm-${doc.id}" class="confirm-change" data-id="${doc.id}">Aceptar cambios</button>
               </div>
+              <div class="error-comment"></div>
               <div class="icons-comment">
-                <div class="icono-medal"><i class="fas fa-medal"></i></div>
+                <div class="icono-medal"><i class="fas fa-medal" data-id="${doc.id}"></i></div>
                 <div class="icono-delete"><i class="fas fa-trash-alt" data-id="${doc.id}"></i></div>
               </div>
             </article>
@@ -85,12 +86,15 @@ export const home = () => {
           });
           //
           const btnEdit = containerComment.querySelectorAll('.btn-edit');
-          const acceptChanges = containerComment.querySelector('.confirm-change');
+          const errorComment = containerComment.querySelector('.error-comment');
+          const textareValue = containerComment.querySelector('.comment-post');
           btnEdit.forEach((btn) => {
             btn.addEventListener('click', (event) => {
               const contentIdEdit = event.target.dataset.id;
               const textareaEdit = containerComment.querySelector(`#input-${contentIdEdit}`);
               textareaEdit.removeAttribute('disabled');
+              const acceptChanges = containerComment.querySelector(`#btn-confirm-${contentIdEdit}`);
+              // const acceptChanges = containerComment.querySelector(`.confirm-change[data-id="${contentIdEdit}"]`);
               acceptChanges.style.display = 'block';
               const btnConfirmEdit = containerComment.querySelectorAll('.confirm-change');
               btnConfirmEdit.forEach((confirm) => {
@@ -101,6 +105,10 @@ export const home = () => {
                   textareaEdit.setAttribute('disabled', 'add-disabled');
                 });
               });
+              if (textareValue.value === '') {
+                console.log('Se esta probando', textareaEdit.value);
+                errorComment.innerHTML = 'No se puede realizar publicaciones vacias';
+              }
             });
           });
         });

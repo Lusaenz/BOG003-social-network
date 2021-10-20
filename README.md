@@ -1,4 +1,4 @@
-![img-logo](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/FILMPRO.png)
+![img-logo](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/FIMPRO-LETRA.png)
 
 # Social Network
 
@@ -26,11 +26,6 @@ Tras la investigacion se obtuvo dos tipos de diseño (baja fidelidad - alta fide
 ![Prototipos-baja-fidelidad-login-registro](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/prototipos%20de%20baja%20fidelidad.png)
 
 ### Diseño alta fidelidad
-![prototipo-alta-fidelidad-login]()
-![prototipo-alta-fidelidad-registro]()
-![prototipo-alta-fidelidad-Home]()
-![prototipo-alta-fidelidad-confirmacion-email]()
-
 * Para ver mejor los prototipos en el siguiente link [link-figma](https://www.figma.com/file/eBO6ZCWj1TBF6NtxR2EydG/social-NetWord-team-library?node-id=321%3A3)
 ## 3. Historias de usuario
 ### H.U - 1 - 2. pantalla de registro.
@@ -56,10 +51,10 @@ YO como usuario quiero poder registrarme en Filmspro para pertenecer a una comun
 - Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
 
 Los tonos que se manejaron son tonos oscuros con el logo en la parte de arriba cuando la pagina es responsive y a un lado cuando la pagina es desktop.Se hizo el registro con google en la segunda historias de usuario para que tanto el registro normal y el registro con google esten totalmente terminados.
+***
 ![imagen-de-registro-celular](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/1era-verificacion-form.png)
 ![imagen-iniciar-sesion](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/iniciar_sesion.png)
 ![imagen-iniciar-sesion-google](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/iniciar-sesion-google.png)
-![imagen-de-registro-navegador]()
 ### UH - 3. verificacion de cuenta via email
 Yo como usuario quiero poder recibir un correo electrónico de filmspro para confirmar mi dirección correo electrónico y poder iniciar sesión.
 

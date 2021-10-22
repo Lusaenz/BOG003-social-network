@@ -92,7 +92,8 @@ export const home = () => {
               const textareaEdit = containerComment.querySelector(`#input-${contentIdEdit}`);
               textareaEdit.removeAttribute('disabled');
               const acceptChanges = containerComment.querySelector(`#btn-confirm-${contentIdEdit}`);
-              // const acceptChanges = containerComment.querySelector(`.confirm-change[data-id="${contentIdEdit}"]`);
+              // const acceptChanges = containerComment.querySelector
+              // (`.confirm-change[data-id="${contentIdEdit}"]`);
               acceptChanges.style.display = 'block';
               const btnConfirmEdit = containerComment.querySelectorAll('.confirm-change');
               btnConfirmEdit.forEach((confirm) => {

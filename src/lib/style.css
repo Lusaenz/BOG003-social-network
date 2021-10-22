@@ -87,15 +87,21 @@ body {
  .btn-register {
   background: #199442;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 20px;
   font-weight: bold;
   padding: 1px;
   margin: auto;
   width: 50%;
  }
+.btn-register-here {
+  color: #199442;
+  margin-left: 38%;
+  font-size: 22px;
+
+}
  .btn-register button {
   font-family: 'Sree Krushnadevaraya', serif;
-  border: none;
+  border: none; 
   background: #199442;
   color: aliceblue;
   text-decoration: none;
@@ -108,7 +114,8 @@ body {
  .btnRegister-google button {
    padding: 10px;
    max-width: 100%;
-   border-radius: 7px;
+   border: none;
+   border-radius: 25px;
  }
   .formulary-name-input-correcto .formulary-validation {
    color: #1ED83B;
@@ -122,8 +129,147 @@ body {
     border: 3px solid red;
   }
   .confirmMessage {
+    font-size: 20px;
     color: rgb(63, 221, 111);
+    text-align: center;
   }
+  .photo-two {
+    position: relative;
+    margin-top: 20%;
+    margin-left: 40%;
+  }
+  .header {
+    background: #070B29;
+    padding: 25px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-left: 95%;
+    font-size: 25px;
+    color: rgb(16, 163, 107);
+    margin-right: 20%;
+  }
+  nav ul li i {
+    padding-left: 25px; 
+  }
+  .logo-words {
+   position: absolute;
+   padding: 30px 25px 0px 20px;
+  }
+  .publication {
+    padding: 50px;
+    background: indianred;
+  }
+  .publication textarea {
+    padding: 45px;
+    width:100% ;
+    border-radius: 10px;
+  }
+  .space-mjs {
+    background: #070B29;
+    padding: 25px;
+    border-radius: 25px;
+  }
+  .edit button  {
+    position: absolute;
+    border: none;
+    background: none;
+    color: #C4C4C4;
+    margin-left: 70%;
+    margin-top: 2%;
+    font-size: 25px;
+    font-family: 'Sree Krushnadevaraya', serif;
+  }
+  .share button {
+    background: rgb(16, 163, 107);
+    padding: 5px 20px 5px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+  }
+  .parallax {
+    background-image: linear-gradient( to right, rgba(121, 119, 119, 0.75), rgba(68, 75, 151, 0.75)), url('../img/pelicula.jpg');
+    background-attachment: fixed;
+    background-position: 100% 30%;
+    background-size: cover;
+    height: 85%;
+  }
+  .container-footer {
+    color: #C4C4C4;
+    text-align: center;
+    font-size: 13px;
+  }
+  .container-footer b {
+    display: block;
+  }
+  .name-post {
+    font-size: 30px;
+    color: #dfdbdb;
+    padding-top: -10px;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 10%;
+    
+  }
+  .comment-post{
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+  }
+  .icons-comment{
+    display: flex;
+    justify-content: space-between;
+  }
+  .icono-medal{
+    color:#91932D;
+    font-size: 35px;
+    margin-left: 5%;
+  }
+  .icono-delete{
+    /* display: none; */
+    color:#999898 ;
+    font-size: 30px;
+    margin-right: 5%;
+  }
+  .profile-user {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8%;
+  }
+  .btn-profile{
+    padding: 20px;
+    border-radius: 35px;
+    background: rgb(16, 163, 107);
+    font-size: 20px;
+    border: none;
+  }
+  .btn-profile i {
+    font-size: 30px;
+    color: white;
+  }
+  .confirm-change {  
+    display: none; 
+    position: absolute;
+    margin-left: 35%;
+    margin-top: 3%;
+    background: rgb(16, 163, 107);
+    padding: 10px 10px 10px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+  }
+  .error-comment {
+    position:absolute;
+    color: #f8e7e7;
+    margin-top: 0%;
+    margin-left: 27%;
+    font-size: 20px;
+ }
   /*CONTENDOR DE TODA LA PAGINA RESPONSIVE*/
 @media (max-width:640px) {
   .logo img {
@@ -354,6 +500,7 @@ padding-left: 20px;
     background: white;
     padding: 10px;
     border-radius: 8px;
+    font-size: 15px;
   }
   .icons-comment{
     display: flex;

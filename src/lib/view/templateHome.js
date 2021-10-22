@@ -3,6 +3,7 @@ import {
   receiveData,
   deletePost,
   editPost,
+  signOut,
 } from '../firebase.js';
 
 export const home = () => {
@@ -15,7 +16,7 @@ export const home = () => {
       </div>
       <ul>
         <li><i class="fas fa-home"></i></li>
-        <li><i class="fas fa-power-off"></i></li>
+        <li><i id="btn-off" class="fas fa-power-off"></i></li>
       </ul>
     </nav>
   </header>
@@ -45,14 +46,17 @@ export const home = () => {
       .then((querySnapshot) => {
         const containerComment = document.querySelector('.container-comment');
         querySnapshot.forEach((doc) => {
+          const postUid = doc.data().uidUser;
+          const uid = firebase.auth().currentUser.uid;
           const targetDiv = document.createElement('div');
           targetDiv.setAttribute('class', 'publication parallax');
           targetDiv.innerHTML += `
           <section id="post-${doc.id}" class="publication parallax">
             <article class="space-mjs">
-              <div class="edit">
-                <button class="btn-edit" data-id="${doc.id}">Editar</button>
-              </div>
+              ${postUid === uid ? `
+            <div class="edit">
+              <button id="edit-${doc.id}" class="btn-edit" data-id="${doc.id}">Editar</button>
+            </div>` : ''}
                 <div class="profile-user">
                   <button class="btn-profile"><i class="fas fa-theater-masks"></i></button>
                   <p class="name-post">${doc.data().namePost}</p>
@@ -66,7 +70,9 @@ export const home = () => {
               <div id="error-${doc.id}" class="error-comment"></div>
               <div class="icons-comment">
                 <div class="icono-medal"><i class="fas fa-medal" data-id="${doc.id}"></i></div>
-                <div class="icono-delete"><i class="fas fa-trash-alt" data-id="${doc.id}"></i></div>
+                ${postUid === uid ? `
+                <div id="delete-${doc.id}" class="icono-delete" ><i class="fas fa-trash-alt" data-id="${doc.id}"></i></div>` : ''}
+
               </div>
             </article>
           </section>`;
@@ -136,6 +142,10 @@ export const home = () => {
         inputPost.value = '';
       });
     }
+  });
+  const btnOff = containerHome.querySelector('#btn-off');
+  btnOff.addEventListener('click', () => {
+    signOut();
   });
   return containerHome;
 };

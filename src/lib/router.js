@@ -9,6 +9,9 @@ const showTemplate = (hash) => {
   containerRoot.innerHTML = '';
   switch (hash) {
     case '#/':
+      // containerRoot.appendChild(login());
+      break;
+    case '#/Login':
       containerRoot.appendChild(login());
       break;
     case '#/Registrate-aqui':
@@ -27,6 +30,8 @@ const showTemplate = (hash) => {
 
 export const changeRouter = (hash) => {
   if (hash === '#/') {
+    return showTemplate(hash);
+  } else if (hash === '#/Login') {
     return showTemplate(hash);
   } else if (hash === '#/Registrate-aqui') {
     return showTemplate(hash);

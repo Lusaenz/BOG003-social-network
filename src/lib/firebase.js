@@ -86,3 +86,9 @@ export const editPost = (id, content) => {
     contentPost: content,
   });
 };
+// ******** FUNCION DE CERRAR SESION ****** //
+export const signOut = () => {
+  const singOutApp = firebase.auth().signOut();
+  window.location.hash = '#/Login';
+  return singOutApp;
+};

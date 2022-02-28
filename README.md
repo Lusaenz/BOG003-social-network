@@ -150,10 +150,6 @@ Yo como usuario quiero poder borrar una publicación para eliminar una opinión 
 
 # 4. Tecnologías utilizadas.
 
-### React.
-
-- [✅] **React Router**
-
 ### Firebase
 
 - [✅] **Firebase Auth**

@@ -15,19 +15,22 @@
 # 1. Descripcion
 Filmpro es una aplicación para los críticos de las películas o los curiosos que quieren ver recomendación de alguna serie y película que los demás usuarios recomienden.
 Pueden crearse una cuenta, comentantar, editar y eliminar el post.
-
 ### 1.1 Usuario
-Esta aplicacion va dirijida a los amantes de la cinematografia y series tanto jovenes como adultos,
-donde ellos tienen un espacio donde puedan comentar sus gustos y/o opiniones de cada una de ellas,se podra ir generando una comunidad apasionada por las peliculas.
+Esta aplicacion va dirijida a los amantes de la cinematografia tanto jovenes como adultos, tienen un espacio donde puedan comentar sus gustos y/o opiniones de cada pelicula y se podra generando una comunidad apasionada por el mundo de la cinematografia.
+
 # 2. Diseño e investigacion UX
 Pensamos en una red social que pueda conectar a las personas con afinidades y gustos similares acerca de peliculas o series, quisimos brindar una app que sea facil de navegar y entender, con tonos oscuros para darle un ambiente de cine para que no canse la vista del usuario, manejando un contraste verde neon para resaltar sombras e iconos de la aplicacion, se decidio agregar un fondo para seguir con la tematica de peliculas.
 Tras la investigacion se obtuvo dos tipos de diseño (baja fidelidad - alta fidelidad).
+
 ### Diseño baja fidelidad
 ![Prototipos-baja-fidelidad-login-registro](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/prototipos%20de%20baja%20fidelidad.png)
 
 ### Diseño alta fidelidad
 * Para ver mejor los prototipos en el siguiente link [link-figma](https://www.figma.com/file/eBO6ZCWj1TBF6NtxR2EydG/social-NetWord-team-library?node-id=321%3A3)
-## 3. Historias de usuario
+
+# 3. Historias de usuario
+Este proyecto se realizo en base a historias de usuario.
+
 ### H.U - 1 - 2. pantalla de registro.
 YO como usuario quiero poder registrarme en Filmspro para pertenecer a una comunidad con mis mismos gustos por las películas.
 
@@ -144,56 +147,28 @@ Yo como usuario quiero poder borrar una publicación para eliminar una opinión 
 - Deben haber recibido code review de al menos una compañera de otro equipo.
 - Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
 ![imagen-boton-eliminar](https://github.com/Lusaenz/BOG003-social-network/blob/main/src/img/boton-eliminar.png)
-# 4. Criterios de aceptacion
 
-- [✅] **Uso de linter (ESLINT)**
+# 4. Tecnologías utilizadas.
 
-- [✅] **Uso de identificadores descriptivos (Nomenclatura y Semántica)**
+### React.
 
-- [✅] **Diferenciar entre expresiones (expressions) y sentencias (statements)**
-
-- [✅] **Callbacks**
-
-
-### Control de Versiones (Git y GitHub)
-
-- [✅] **Git: Instalación y configuración**
-
-- [✅] **Git: Control de versiones con git (init, clone, add, commit, status, push, pull, remote)**
-
-- [✅] **GitHub: Despliegue con GitHub Pages**
-
-  * [Sitio oficial de GitHub Pages](https://pages.github.com/)
-
-### UX (User eXperience)
-
-- [✅] **Diseñar la aplicación pensando en y entendiendo al usuario**
-
-- [✅] **Crear prototipos para obtener feedback e iterar**
-
-- [✅] **Aplicar los principios de diseño visual (contraste, alineación, jerarquía)**
-
-- [✅] **Planear y ejecutar tests de usabilidad**
+- [✅] **React Router**
 
 ### Firebase
 
 - [✅] **Firebase Auth**
 
 - [✅] **Firestore**
-### 4.1 Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
 
-[✅] Debes definir cuál será el flujo que seguirá el usuario dentro de tu aplicación
-y, con eso, diseña la Interfaz de Usuario (UI por sus siglas en inglés) que
-siga este flujo.
-### 4.2 Responsive
-[✅] Debe verse bien en dispositivos de pantallas grandes
-(computadoras/es, laptops, etc.) y pequeñas (_tablets_, celulares, etc.). Te
-sugerimos seguir la técnica de _`mobile first`_ (más detalles sobre esta técnica
-al final).
-#### 4.3 Creación de cuenta de usuario e inicio de sesión
+### Para el diseño de la Interfaz de Usuario.
+
+[✅] **Figma**
+
+# 5. Interacción del Usuaria en Filmpro.
+El usuario podra hacer las siguientes acciones el la red social. 
 
 * [✅] _Login_ con Firebase:
-  - Creación de cuenta de acceso y autenticación con cuenta de correo y
+  - Creara un cuenta de acceso y autenticación con cuenta de correo y
     contraseña, y también con una cuenta de Google.
 * [✅] Validaciones:
   - Solamente se permite el acceso a usuarios con cuentas válidas.
@@ -201,36 +176,25 @@ al final).
   - La cuenta de usuario debe ser un correo electrónico válido.
   - Lo que se escriba en el campo (_input_) de contraseña debe ser secreto.
 * [✅] Comportamiento:
-  - Al enviarse el formulario de registro o inicio de sesión, debe validarse.
-  - Si hay errores, se deben mostrar mensajes descriptivos para ayudar al
-  [✅] usuario a corregirlos.
-#### 4.4 Muro/timeline
+  - Al enviarse el formulario de registro o inicio de sesión, se validara todos el formulario.
+  - Si hay errores, se mostrar un mensajes descriptivos para ayudar alusuario a corregirlos.
 
+#### 5.1 Muro/timeline
 * [✅] Validaciones:
-  - Al publicar, se debe validar que exista contenido en el _input_.
+  - Al publicar, se  valida que exista contenido en el _input_.
 * [✅] Comportamiento:
-  - Al recargar la aplicación, se debe verificar si el usuario está _logueado_
+  - Al recargar la aplicación, se verifica si el usuario está _logueado_
     antes de mostrar contenido.
-  - Poder publicar un _post_.
-  - Poder eliminar un post específico.
-  - Pedir confirmación antes de eliminar un _post_.
-  - Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la
+  - El usuario podra publicar un _post_.
+  - El usuario podra eliminar un post específico.
+  - Se pedira confirmación antes de eliminar un _post_.
+  - Al guardar los cambios se cambiar de vuelta a un texto normal pero con la
     información editada.
-  - Al recargar la página debo de poder ver los textos editados.
-# 5 Test de usabilidad
+  - Al recargar la página se podra ver los textos editados.
 
-Apartir de las 3 entrevistas realizadas al inicio del proyecto, logramos definir la tematica, la gama de color y la problematica a trabajar.
-Tras recibir feedback de los usuarios en diversos momentos del proyecto logramos ir mejorando la red social en temas como:
- - Colores.
- - Decidimos implementar un degrade de tono azul y gris a la imagen de fondo de la aplicacion para
-   evitar contraste y cansancio en la vista del usuario.
- - Mejoramos el espacio del email en el area del formulario de registro para que cualquier email   
-   registrarse en la aplicacion.
- - Se hizo mejora en la tipografia para que pudiera ser mas legible.
- - Se unificaron todos los contrastes de color verde.
 # 6. Autoria
 
- - este proyecto es de autoria de Leidy paez - Luisa saenz - Maria chacon
+ - Este proyecto es de autoria de Luisa saenz - Leidy paez -Maria chacon
 
 # Recursos
 
